@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_carijasa"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Cari Jasa" />
+        <item
+            android:id="@+id/nav_statuspesanan"
+            android:icon="@drawable/ic_photo_library_black_24dp"
+            android:title="Status Pesanan" />
+    </group>
+
+    <item android:title="Toko">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_pesanan"
+                    android:title="@string/nav_pesanan" />
+                <item
+                    android:id="@+id/nav_katalog_jasa"
+                    android:title="@string/nav_katalog_jasa" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Akun">
+        <menu>
+            <item
+                android:id="@+id/nav_profil"
+                android:title="@string/nav_profil" />
+            <item
+                android:id="@+id/nav_keluar"
+                android:title="@string/nav_keluar" />
+        </menu>
+    </item>
+    <!--
+    <item android:title="Other">
+        <menu>
+            <item
+            android:id="@+id/nav_about_us"
+            android:title="@string/nav_about_us" />
+            <item
+            android:id="@+id/nav_privacy_policy"
+            android:title="@string/privacy_policy" />
+        </menu>
+    </item>
+    -->
+
+</menu>

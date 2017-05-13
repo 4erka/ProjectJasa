@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="64dp"
+    android:paddingRight="64dp"
+    android:paddingTop="16dp"
+    tools:context="com.akujasa.jasacenter.RegisterActivity">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama"
+        android:id="@+id/regisnama"
+        android:gravity="left"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:id="@+id/regisemail"
+        android:gravity="left"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/regisnama"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Alamat"
+        android:id="@+id/regisalamat"
+        android:gravity="left"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/regisemail"/>
+
+    <EditText
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nomor HP"
+        android:id="@+id/regisnohp"
+        android:gravity="left"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/regisalamat"/>
+
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:gravity="left"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/regisnohp"
+        android:id="@+id/regispass"/>
+
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ulangi Password"
+        android:gravity="left"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/regispass"
+        android:id="@+id/regispass1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/regispass1"
+        android:layout_marginTop="30dp"
+        android:text="REGISTER"
+        android:onClick="onRegister"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"/>
+
+</RelativeLayout>
