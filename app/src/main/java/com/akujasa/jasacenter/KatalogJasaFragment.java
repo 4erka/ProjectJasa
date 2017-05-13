@@ -89,8 +89,8 @@ public class KatalogJasaFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //View rootView = inflater.inflate(R.layout.katalog_jasa_fragment, container, false);
-        //listView = (ListView)rootView.findViewById(R.id.listkatalog);
+        View rootView = inflater.inflate(R.layout.katalog_jasa_fragment, container, false);
+        listView = (ListView) rootView.findViewById(android.R.id.list);
         new KatalogJasaFragment.GetAPIKatalog().execute();
         return inflater.inflate(R.layout.katalog_jasa_fragment, container, false);
     }
@@ -215,10 +215,30 @@ public class KatalogJasaFragment extends ListFragment {
             /**
              * Updating parsed JSON data into ListView
              * */
-            ListAdapter adapter = new SimpleAdapter(
+            /*ListAdapter adapter = new SimpleAdapter(
                     getActivity(), KatalogJsonList,
                     R.layout.katalog_jasa_content, new String[]{"jasa_nama"}, new int[]{R.id.listkatalogcontent});
-            listView.setAdapter(adapter);
+            listView.setAdapter(adapter);*/
+
+            // Keys used in Hashmap
+            //String[] from = { "flag","txt","cur" };
+            String[] from = { "jasa_nama" };
+
+            // Ids of views in listview_layout
+            //int[] to = { R.id.flag,R.id.txt,R.id.cur};
+            int[] to = { R.id.listkatalogcontent};
+
+            // Instantiating an adapter to store each items
+            // R.layout.listview_layout defines the layout of each item
+            SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), KatalogJsonList, R.layout.katalog_jasa_content, from, to);
+
+            setListAdapter(adapter);
+
+            /*String[] players={"Aaron Ramsey","Jack Wilshere","Mesut Ozil","Alexis Sanchez",
+                    "Per Metesacker","Keiron Gibbs","Laurent Koscielny","Olivier Giroud"};
+            Log.e(TAG, "test: " + players);
+            ListAdapter adapter=new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players);
+            setListAdapter(adapter);*/
         }
     }
 
