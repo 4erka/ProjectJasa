@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:src="@drawable/bookflat"
+            android:id="@+id/gambarkelas"/>
+
+        <TextView
+            android:id="@+id/listkatalogcontent"
+            android:layout_width="wrap_content"
+            android:layout_height="120px"
+            android:layout_weight="1"
+            android:textSize="19dp"
+            android:layout_toRightOf="@id/gambarkelas"
+            android:paddingLeft="10dp"
+            android:gravity="center|left"/>
+    </RelativeLayout>
+</LinearLayout>

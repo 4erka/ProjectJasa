@@ -1,12 +1,28 @@
 package com.akujasa.jasacenter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +32,15 @@ import android.view.ViewGroup;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class KatalogJasaFragment extends Fragment {
+public class KatalogJasaFragment extends ListFragment {
+    private String TAG = MenuUtamaActivity.class.getSimpleName();
+
+    private ListView listView;
+    private ProgressDialog progressDialog;
+    //Context context;
+    // JSON data url
+    private static String Jsonurl = "http://rilokukuh.com/admin-jasa/android_get_katalog.php";
+    ArrayList<HashMap<String, String>> KatalogJsonList;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -53,6 +77,8 @@ public class KatalogJasaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        KatalogJsonList = new ArrayList<>();
+        //context = getActivity();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -63,6 +89,9 @@ public class KatalogJasaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //View rootView = inflater.inflate(R.layout.katalog_jasa_fragment, container, false);
+        //listView = (ListView)rootView.findViewById(R.id.listkatalog);
+        new KatalogJasaFragment.GetAPIKatalog().execute();
         return inflater.inflate(R.layout.katalog_jasa_fragment, container, false);
     }
 
@@ -84,12 +113,6 @@ public class KatalogJasaFragment extends Fragment {
 //        }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -103,5 +126,105 @@ public class KatalogJasaFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private class GetAPIKatalog extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            progressDialog = new ProgressDialog(getContext());
+            progressDialog.setMessage("Please wait...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            HttpHandler httpHandler = new HttpHandler();
+
+            // request to json data url and getting response
+            HashMap<String, String> params = new HashMap<>();
+            params.put("pj_id", "100");
+            String jsonString = httpHandler.makeServiceCall(Jsonurl, params);
+
+            Log.e(TAG, "Response from url: " + jsonString);
+
+            if (jsonString != null) {
+                try {
+                    JSONObject jsonObject = new JSONObject(jsonString);
+                    // Getting JSON Array node
+                    //JSONArray listMapel = jsonObject.getJSONArray("user");
+
+                    //String status = jsonObject.getString("status");
+                    //String message = jsonObject.getString("message");
+                    JSONArray listData = jsonObject.getJSONArray("data");
+
+                    for (int i = 0; i < listData.length(); i++) {
+                        JSONObject c = listData.getJSONObject(i);
+                        String nama_jasa = c.getString("jasa_nama");
+
+                        // tmp hash map for single contact
+                        HashMap<String, String> data_katalog = new HashMap<>();
+
+                        // adding each child node to HashMap key => value
+                        data_katalog.put("jasa_nama", nama_jasa);
+
+                        // adding contact to contact list
+                        KatalogJsonList.add(data_katalog);
+                        //Log.e(TAG, "Response json: " + KatalogJsonList);
+                    }
+                } catch (final JSONException e) {
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    });
+
+                }
+            } else {
+                Log.e(TAG, "Could not get json from server.");
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Could not get json from server.",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                });
+
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            // Dismiss the progress dialog
+            if (progressDialog.isShowing())
+                progressDialog.dismiss();
+            Log.e(TAG, "test: " + KatalogJsonList);
+            /**
+             * Updating parsed JSON data into ListView
+             * */
+            ListAdapter adapter = new SimpleAdapter(
+                    getActivity(), KatalogJsonList,
+                    R.layout.katalog_jasa_content, new String[]{"jasa_nama"}, new int[]{R.id.listkatalogcontent});
+            listView.setAdapter(adapter);
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
     }
 }
