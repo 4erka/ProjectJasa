@@ -23,7 +23,9 @@
         <activity
             android:name=".MenuUtamaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProfilActivity"></activity>
+        <activity android:name=".ProfilActivity" />
+        <activity android:name=".PesaninformasiActivity" />
+        <activity android:name=".PesanformActivity"></activity>
     </application>
 
 </manifest>

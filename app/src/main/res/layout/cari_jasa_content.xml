@@ -26,7 +26,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_toRightOf="@id/gambarlogo"
-                android:text="5asec Laundry"
                 android:textSize="20dp"
                 android:background="@drawable/backgroundsquareitem"
                 android:paddingBottom="10dp"/>
@@ -34,6 +33,7 @@
             <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/rating"
                 style="@style/Base.Widget.AppCompat.RatingBar.Small"
                 android:layout_marginTop="5dp"/>
         </LinearLayout>

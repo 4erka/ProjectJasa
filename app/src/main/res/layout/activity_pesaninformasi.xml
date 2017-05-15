@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/pesaninformasi_activity"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.akujasa.jasacenter.PesaninformasiActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:id="@+id/pesangambar"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/asec"
+        android:scaleType="centerCrop"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/pesanlayoutinformasi"
+        android:layout_below="@id/pesangambar"
+        android:background="@drawable/backgroudsquare">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="20dp"
+            android:id="@+id/pesannamajasa"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"/>
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pesanrating"
+            android:layout_below="@id/pesangambar"
+            android:layout_centerHorizontal="true"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_marginLeft="10dp"
+            android:clickable="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="12dp"
+            android:layout_below="@+id/pesanrating"
+            android:id="@+id/pesanemail"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="12dp"
+            android:layout_below="@+id/pesanemail"
+            android:id="@+id/pesannomor"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginBottom="3dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/pesanalamat"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pesanlayoutinformasi"
+        android:orientation="vertical"
+        android:id="@+id/pesanlayoutkategori"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/backgroudsquare"
+            android:text="Paket / Item"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@android:color/black"/>
+       <ListView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/katalog"
+
+           />
+
+
+    </LinearLayout>
+</RelativeLayout>
+</ScrollView>
