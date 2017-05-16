@@ -1,6 +1,8 @@
 package com.akujasa.jasacenter;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -13,10 +15,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +37,23 @@ import com.akujasa.jasacenter.PhotosFragment;
 import com.akujasa.jasacenter.SettingsFragment;
 import com.akujasa.jasacenter.CircleTransform;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class MenuUtamaActivity extends AppCompatActivity {
 
+    private String TAG = MenuUtamaActivity.class.getSimpleName();
+
+    private ProgressDialog progressDialog;
+    // JSON data url
+    private static String Jsonurl = "http://192.168.0.187/admin-jasa/android_get_katalog.php";
+
+    ArrayList<HashMap<String, String>> KatalogJsonList;
     private NavigationView navigationView;
     private DrawerLayout drawer;
     private View navHeader;
@@ -67,7 +87,7 @@ public class MenuUtamaActivity extends AppCompatActivity {
     // flag to load home fragment when user presses back key
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
-
+    String idToko;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,13 +112,8 @@ public class MenuUtamaActivity extends AppCompatActivity {
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
-        /*fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+        idToko = getIntent().getExtras().getString("idToko");
+        Log.e(TAG, "idToko: " + idToko);
 
         // load nav menu header data
         loadNavHeader();
@@ -210,8 +225,9 @@ public class MenuUtamaActivity extends AppCompatActivity {
                 return statusPesananTokoFragment;
             case 3:
                 // settings fragment
-                KatalogJasaFragment katalogJasaFragment = new KatalogJasaFragment();
-                return katalogJasaFragment;
+                //KatalogJasaFragment katalogJasaFragment = new KatalogJasaFragment();
+                //KatalogJasaFragment katalogJasaFragment;
+                //return katalogJasaFragment;
             case 4:
                 // settings fragment
                 ProfilFragment profilFragment = new ProfilFragment();
@@ -253,9 +269,15 @@ public class MenuUtamaActivity extends AppCompatActivity {
                         CURRENT_TAG = TAG_PESANAN;
                         break;
                     case R.id.nav_katalog_jasa:
-                        navItemIndex = 3;
-                        CURRENT_TAG = TAG_KATALOGJASA;
-                        break;
+                        //navItemIndex = 3;
+                        //CURRENT_TAG = TAG_KATALOGJASA;
+                        //break;
+                        Intent katalog = new Intent(MenuUtamaActivity.this, KatalogJasaActivity.class);
+                        katalog.putExtra("idToko", idToko);
+                        startActivity(katalog);
+                        //startActivity(new Intent(MenuUtamaActivity.this, KatalogJasaActivity.class));
+                        drawer.closeDrawers();
+                        return true;
                     case R.id.nav_profil:
                         // launch new intent instead of loading fragment
                         startActivity(new Intent(MenuUtamaActivity.this, ProfilActivity.class));
@@ -363,26 +385,6 @@ public class MenuUtamaActivity extends AppCompatActivity {
             return true;
         }
 
-        // user is in notifications fragment
-        // and selected 'Mark all as Read'
-        if (id == R.id.action_mark_all_read) {
-            Toast.makeText(getApplicationContext(), "All notifications marked as read!", Toast.LENGTH_LONG).show();
-        }
-
-        // user is in notifications fragment
-        // and selected 'Clear All'
-        if (id == R.id.action_clear_notifications) {
-            Toast.makeText(getApplicationContext(), "Clear all notifications!", Toast.LENGTH_LONG).show();
-        }
-
         return super.onOptionsItemSelected(item);
     }
-
-    // show or hide the fab
-    /*private void toggleFab() {
-        if (navItemIndex == 0)
-            fab.show();
-        else
-            fab.hide();
-    }*/
 }

@@ -6,11 +6,6 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="120px"
-            android:layout_height="120px"
-            android:src="@drawable/bookflat"
-            android:id="@+id/gambarkelas"/>
 
         <TextView
             android:id="@+id/listkatalogcontent"
@@ -18,8 +13,22 @@
             android:layout_height="120px"
             android:layout_weight="1"
             android:textSize="19dp"
-            android:layout_toRightOf="@id/gambarkelas"
-            android:paddingLeft="10dp"
             android:gravity="center|left"/>
+        <Button
+            android:text="EDIT"
+            android:textSize="10dp"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/katalog_edit"
+            android:layout_toLeftOf="@+id/katalog_hapus"/>
+        <Button
+            android:text="HAPUS"
+            android:textSize="10dp"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/katalog_hapus"/>
     </RelativeLayout>
 </LinearLayout>

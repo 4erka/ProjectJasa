@@ -2,6 +2,8 @@ package com.akujasa.jasacenter;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,7 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -32,7 +36,7 @@ import java.util.HashMap;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class KatalogJasaFragment extends ListFragment {
+public class KatalogJasaFragment extends Fragment{
     private String TAG = MenuUtamaActivity.class.getSimpleName();
 
     private ListView listView;
@@ -41,6 +45,7 @@ public class KatalogJasaFragment extends ListFragment {
     // JSON data url
     private static String Jsonurl = "http://rilokukuh.com/admin-jasa/android_get_katalog.php";
     ArrayList<HashMap<String, String>> KatalogJsonList;
+    ArrayList<String> namaKatalogJasa;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -77,7 +82,6 @@ public class KatalogJasaFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KatalogJsonList = new ArrayList<>();
         //context = getActivity();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -90,8 +94,16 @@ public class KatalogJasaFragment extends ListFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.katalog_jasa_fragment, container, false);
-        listView = (ListView) rootView.findViewById(android.R.id.list);
-        new KatalogJasaFragment.GetAPIKatalog().execute();
+        listView = (ListView) rootView.findViewById(R.id.list_katalog_jasa);
+        //new KatalogJasaFragment.GetAPIKatalog().execute();
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = (String) getListAdapter().getItem(position);
+                Toast.makeText(getActivity(), item + " selected", Toast.LENGTH_LONG).show();
+            }
+        });*/
+
         return inflater.inflate(R.layout.katalog_jasa_fragment, container, false);
     }
 
@@ -113,6 +125,12 @@ public class KatalogJasaFragment extends ListFragment {
 //        }
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -127,6 +145,24 @@ public class KatalogJasaFragment extends ListFragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        //KatalogJsonList = new ArrayList<>();
+        //new KatalogJasaFragment.GetAPIKatalog().execute();
+    }
+
+    public void getListKatalogIndex(Context context){
+        Toast.makeText(context, "Logout user!", Toast.LENGTH_LONG).show();
+    }
+    /*
+    @Override
+    public void onListItemClick(ListView parent, View v, int position, long id) {
+        Log.e(TAG, "onclick: " + parent + v + position + id);
+        String item = (String) getListAdapter().getItem(position);
+        Toast.makeText(getActivity(), item + " selected", Toast.LENGTH_LONG).show();
+    }*/
 
     private class GetAPIKatalog extends AsyncTask<Void, Void, Void> {
 
@@ -219,6 +255,13 @@ public class KatalogJasaFragment extends ListFragment {
                     getActivity(), KatalogJsonList,
                     R.layout.katalog_jasa_content, new String[]{"jasa_nama"}, new int[]{R.id.listkatalogcontent});
             listView.setAdapter(adapter);*/
+            namaKatalogJasa = new ArrayList<String>();
+            for (HashMap<String, String> hash : KatalogJsonList) {
+                for (String current : hash.values()) {
+                    namaKatalogJasa.add(current);
+                }
+            }
+            Log.e(TAG, "nama: " + namaKatalogJasa);
 
             // Keys used in Hashmap
             //String[] from = { "flag","txt","cur" };
@@ -228,23 +271,20 @@ public class KatalogJasaFragment extends ListFragment {
             //int[] to = { R.id.flag,R.id.txt,R.id.cur};
             int[] to = { R.id.listkatalogcontent};
 
+            ArrayList<String> list = new ArrayList<String>();
+            list.add("item1");
+            list.add("item2");
+
             // Instantiating an adapter to store each items
-            // R.layout.listview_layout defines the layout of each item
-            SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), KatalogJsonList, R.layout.katalog_jasa_content, from, to);
+            //R.layout.listview_layout defines the layout of each item
+            //SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), KatalogJsonList, R.layout.katalog_jasa_content, from, to);
+            //setListAdapter(adapter);
 
-            setListAdapter(adapter);
-
-            /*String[] players={"Aaron Ramsey","Jack Wilshere","Mesut Ozil","Alexis Sanchez",
-                    "Per Metesacker","Keiron Gibbs","Laurent Koscielny","Olivier Giroud"};
-            Log.e(TAG, "test: " + players);
-            ListAdapter adapter=new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players);
-            setListAdapter(adapter);*/
+            //String[] players={"Aaron Ramsey","Jack Wilshere","Mesut Ozil","Alexis Sanchez",
+            //        "Per Metesacker","Keiron Gibbs","Laurent Koscielny","Olivier Giroud"};
+            //Log.e(TAG, "test: " + players);
+            //ListAdapter adapter=new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1);
+            //setListAdapter(adapter);
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
     }
 }

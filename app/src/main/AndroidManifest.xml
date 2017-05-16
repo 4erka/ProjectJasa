@@ -45,7 +45,8 @@
         <activity android:name=".KatalogJasaActivity" />
         <activity android:name=".KatalogJasaEdit" />
         <activity android:name=".StatusPesananTokoBaruKeterangan" />
-        <activity android:name=".StatusPesananTokoProgressKeterangan"></activity>
+        <activity android:name=".StatusPesananTokoProgressKeterangan" />
+        <activity android:name=".StatusPesananTokoSelesaiKeterangan"></activity>
     </application>
 
 </manifest>

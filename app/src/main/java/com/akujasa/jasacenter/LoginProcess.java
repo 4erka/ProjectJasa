@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -36,7 +37,7 @@ public class LoginProcess extends AsyncTask {
         try{
             String email = (String)objects[0];
             String password = (String)objects[1];
-            String idToko = (String)objects[2];
+            idToko = (String)objects[2];
             //emails = email;
             String link = "http://rilokukuh.com/admin-jasa/android_ksm_login.php";
             String data = URLEncoder.encode("ksm_email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8");
@@ -75,10 +76,11 @@ public class LoginProcess extends AsyncTask {
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("pencari_id",id);
             editor.commit();
-            Toast.makeText(context,"Selamat Datang!",Toast.LENGTH_LONG).show();
+            //Toast.makeText(context,"Selamat Datang!",Toast.LENGTH_LONG).show();
             Intent intentku = new Intent(context, MenuUtamaActivity.class);
             intentku.putExtra("pencari_id",id);
             intentku.putExtra("idToko", idToko);
+            Toast.makeText(context,"idToko2 : " + idToko,Toast.LENGTH_LONG).show();
             context.startActivity(intentku);
             ((Activity)context).finish();
         }
