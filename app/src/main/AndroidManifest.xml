@@ -25,11 +25,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ProfilActivity" />
         <activity android:name=".PesaninformasiActivity" />
-        <activity android:name=".PesanformActivity"></activity>
+        <activity android:name=".PesanformActivity" />
         <activity android:name=".KatalogJasaTambah" />
         <activity android:name=".KatalogJasaActivity" />
         <activity android:name=".KatalogJasaEdit" />
-        <activity android:name=".StatusPesananTokoBaruKeterangan"></activity>
+        <activity android:name=".StatusPesananTokoBaruKeterangan" />
+        <activity android:name=".StatusPesananTokoProgressKeterangan"></activity>
     </application>
 
 </manifest>
