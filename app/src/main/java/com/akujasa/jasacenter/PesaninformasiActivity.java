@@ -15,6 +15,7 @@ public class PesaninformasiActivity extends AppCompatActivity {
     private TextView tvAlamat;
     private TextView tvNohp;
     private ListView lvList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

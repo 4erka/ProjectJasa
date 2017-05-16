@@ -46,7 +46,7 @@ public class KatalogAdapter extends ArrayAdapter<ItemKatalog>{
             @Override
             public void onClick(View v) {
                 String jumlah = etJumlah.getText().toString();
-                Intent intentku = new Intent(getContext(), PesanformActivity.class);
+                Intent intentku = new Intent(getContext(), PesananMaps.class);
                 intentku.putExtra("katalog",dtkatalog);
                 intentku.putExtra("jumlah",jumlah);
                 getContext().startActivity(intentku);
