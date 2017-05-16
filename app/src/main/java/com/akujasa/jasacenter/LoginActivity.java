@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
         etEmail = (EditText)findViewById(R.id.inputemail);
         etPassword = (EditText)findViewById(R.id.inputpass);
+        loginJsonList = new ArrayList<>();
     }
 
     public void onRegis(View view){
