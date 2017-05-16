@@ -24,6 +24,7 @@ public class LoginProcess extends AsyncTask {
     private String status;
     private Context context;
     private String id;
+    private String idToko;
     public LoginProcess(Context context, String status){
         this.context = context;
         this.status=status;
@@ -35,6 +36,7 @@ public class LoginProcess extends AsyncTask {
         try{
             String email = (String)objects[0];
             String password = (String)objects[1];
+            String idToko = (String)objects[2];
             //emails = email;
             String link = "http://rilokukuh.com/admin-jasa/android_ksm_login.php";
             String data = URLEncoder.encode("ksm_email","UTF-8")+"="+URLEncoder.encode(email,"UTF-8");
@@ -76,6 +78,7 @@ public class LoginProcess extends AsyncTask {
             Toast.makeText(context,"Selamat Datang!",Toast.LENGTH_LONG).show();
             Intent intentku = new Intent(context, MenuUtamaActivity.class);
             intentku.putExtra("pencari_id",id);
+            intentku.putExtra("idToko", idToko);
             context.startActivity(intentku);
             ((Activity)context).finish();
         }
