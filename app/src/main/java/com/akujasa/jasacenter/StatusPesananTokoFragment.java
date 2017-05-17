@@ -7,9 +7,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import static android.content.ContentValues.TAG;
 
 
 public class StatusPesananTokoFragment extends Fragment {
@@ -17,6 +20,7 @@ public class StatusPesananTokoFragment extends Fragment {
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 3;
+    String idToko;
 
     @Nullable
     @Override
@@ -46,6 +50,9 @@ public class StatusPesananTokoFragment extends Fragment {
             }
         });
 
+        idToko = getArguments().getString("idToko");
+        Log.e(TAG, "status pesanan fragment: " + idToko);
+
         return v;
 
     }
@@ -64,11 +71,26 @@ public class StatusPesananTokoFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new StatusPesananTokoBaru();
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putString("idToko", idToko);
+                    StatusPesananTokoBaru statusPesananTokoBaru = new StatusPesananTokoBaru();
+                    statusPesananTokoBaru.setArguments(bundle1);
+                    return statusPesananTokoBaru;
+                    //return new StatusPesananTokoBaru();
                 case 1:
-                    return new StatusPesananTokoProgress();
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putString("idToko", idToko);
+                    StatusPesananTokoProgress statusPesananTokoProgress = new StatusPesananTokoProgress();
+                    statusPesananTokoProgress.setArguments(bundle2);
+                    return statusPesananTokoProgress;
+                    //return new StatusPesananTokoProgress();
                 case 2:
-                    return new StatusPesananTokoSelesai();
+                    Bundle bundle3 = new Bundle();
+                    bundle3.putString("idToko", idToko);
+                    StatusPesananTokoSelesai statusPesananTokoSelesai = new StatusPesananTokoSelesai();
+                    statusPesananTokoSelesai.setArguments(bundle3);
+                    return statusPesananTokoSelesai;
+                    //return new StatusPesananTokoSelesai();
             }
             return null;
         }

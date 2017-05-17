@@ -76,11 +76,11 @@ public class LoginProcess extends AsyncTask {
             SharedPreferences.Editor editor = sp.edit();
             editor.putString("pencari_id",id);
             editor.commit();
-            //Toast.makeText(context,"Selamat Datang!",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Selamat Datang!",Toast.LENGTH_LONG).show();
             Intent intentku = new Intent(context, MenuUtamaActivity.class);
             intentku.putExtra("pencari_id",id);
             intentku.putExtra("idToko", idToko);
-            Toast.makeText(context,"idToko2 : " + idToko,Toast.LENGTH_LONG).show();
+            //Toast.makeText(context,"idToko2 : " + idToko,Toast.LENGTH_LONG).show();
             context.startActivity(intentku);
             ((Activity)context).finish();
         }

@@ -216,12 +216,15 @@ public class MenuUtamaActivity extends AppCompatActivity {
                 CariJasaFragment cariJasaFragment = new CariJasaFragment();
                 return cariJasaFragment;
             case 1:
-                // photos
+                // status pesanan konsumen
                 StatusPesananFragment statusPesananFragment = new StatusPesananFragment();
                 return statusPesananFragment;
             case 2:
-                // photos
+                // Status pesanan penyedia
+                Bundle bundle = new Bundle();
+                bundle.putString("idToko", idToko);
                 StatusPesananTokoFragment statusPesananTokoFragment = new StatusPesananTokoFragment();
+                statusPesananTokoFragment.setArguments(bundle);
                 return statusPesananTokoFragment;
             case 3:
                 // settings fragment
