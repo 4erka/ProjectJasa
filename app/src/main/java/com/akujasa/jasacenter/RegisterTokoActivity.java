@@ -1,6 +1,7 @@
 package com.akujasa.jasacenter;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class RegisterTokoActivity extends AppCompatActivity {
     private String TAG = StatusPesananTokoBaruKeterangan.class.getSimpleName();
 
     private ProgressDialog progressDialog;
-    private static String Jsonurl = "http://rilokukuh.com/admin-jasa/android_pj_update_pesanan.php";
+    private static String Jsonurl = "http://rilokukuh.com/admin-jasa/android_register.php";
     ArrayList<HashMap<String, String>> registerTokoJsonList;
     HashMap<String, String> params = new HashMap<>();
     String idKonsumen;
@@ -33,6 +34,8 @@ public class RegisterTokoActivity extends AppCompatActivity {
     EditText alamat;
     String stNama_toko;
     String stAlamat;
+    public static String lintang;
+    public static String bujur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class RegisterTokoActivity extends AppCompatActivity {
         nama_toko = (EditText)findViewById(R.id.nama_toko_register_toko) ;
         alamat = (EditText)findViewById(R.id.alamat_toko_register_toko);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        registerTokoJsonList = new ArrayList<>();
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner_register_toko);
         // Spinner click listener
@@ -109,9 +113,15 @@ public class RegisterTokoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onLokasiTokoRegister(View view){
+        Intent lihat = new Intent(RegisterTokoActivity.this, RegisterTokoMap.class);
+        startActivity(lihat);
+    }
+
     public void onRegisterToko(View view){
         stNama_toko = nama_toko.getText().toString();
         stAlamat = alamat.getText().toString();
+        Log.e(TAG, "Response from url: " + lintang + bujur);
         new GetAPIRegisterToko().execute();
     }
 
@@ -132,10 +142,10 @@ public class RegisterTokoActivity extends AppCompatActivity {
             HttpHandler httpHandler = new HttpHandler();
 
             params.put("ksm_id", idKonsumen);
-            params.put("pj_nama", stNama_toko);
+            params.put("pj_nama_jasa", stNama_toko);
             params.put("pj_alamat", stAlamat);
-            params.put("pj_lintang", "0");
-            params.put("pj_bujur", "0");
+            params.put("pj_lintang", lintang);
+            params.put("pj_bujur", bujur);
 
             // request to json data url and getting response
             String jsonString = httpHandler.makeServiceCall(Jsonurl, params);
@@ -195,7 +205,7 @@ public class RegisterTokoActivity extends AppCompatActivity {
             if (progressDialog.isShowing())
                 progressDialog.dismiss();
             Log.e(TAG, "test: " + registerTokoJsonList.get(0).get("message"));
-            if(registerTokoJsonList.get(0).get("message").equals("update status success")){
+            if(registerTokoJsonList.get(0).get("status").equals("200")){
                 Toast.makeText(getApplicationContext(),
                         "Register berhasil",
                         Toast.LENGTH_LONG)
