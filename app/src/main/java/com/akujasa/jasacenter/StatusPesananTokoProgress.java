@@ -58,6 +58,8 @@ public class StatusPesananTokoProgress extends Fragment{
                 pesananprogressketerangan.putExtra("tanggal", pesananProgressJsonList.get(position).get("psn_datetime"));
                 pesananprogressketerangan.putExtra("keterangan", pesananProgressJsonList.get(position).get("psn_keterangan"));
                 pesananprogressketerangan.putExtra("alamat", pesananProgressJsonList.get(position).get("psn_alamat"));
+                pesananprogressketerangan.putExtra("lintang", pesananProgressJsonList.get(position).get("psn_lintang"));
+                pesananprogressketerangan.putExtra("bujur", pesananProgressJsonList.get(position).get("psn_bujur"));
                 pesananprogressketerangan.putExtra("pesanan_id", pesananProgressJsonList.get(position).get("psn_id"));
                 pesananprogressketerangan.putExtra("pesanan_jumlah", pesananProgressJsonList.get(position).get("psn_jumlah"));
                 //startActivityForResult(pesananbaruketerangan, 0); //I always put 0 for someIntValue
@@ -116,6 +118,8 @@ public class StatusPesananTokoProgress extends Fragment{
                         String tanggal = c.getString("psn_datetime");
                         String keterangan = c.getString("psn_keterangan");
                         String alamat = c.getString("psn_alamat");
+                        String lintang = c.getString("psn_lintang");
+                        String bujur = c.getString("psn_bujur");
                         String pesananan_id = c.getString("psn_id");
                         String harga = c.getString("psn_jumlah");
 
@@ -131,6 +135,8 @@ public class StatusPesananTokoProgress extends Fragment{
                         data.put("psn_datetime", tanggal);
                         data.put("psn_keterangan", keterangan);
                         data.put("psn_alamat", alamat);
+                        data.put("psn_lintang", lintang);
+                        data.put("psn_bujur", bujur);
                         data.put("psn_id", pesananan_id);
                         data.put("psn_jumlah", harga);
 

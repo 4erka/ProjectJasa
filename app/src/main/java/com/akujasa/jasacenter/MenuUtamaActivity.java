@@ -88,6 +88,7 @@ public class MenuUtamaActivity extends AppCompatActivity {
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
     String idToko;
+    String idKonsumen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +113,8 @@ public class MenuUtamaActivity extends AppCompatActivity {
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
+        idKonsumen = getIntent().getExtras().getString("pencari_id");
+        Log.e(TAG, "idKonsumen: " + idKonsumen);
         idToko = getIntent().getExtras().getString("idToko");
         Log.e(TAG, "idToko: " + idToko);
 
@@ -268,18 +271,37 @@ public class MenuUtamaActivity extends AppCompatActivity {
                         CURRENT_TAG = TAG_STATUSPESANAN;
                         break;
                     case R.id.nav_pesanan:
-                        navItemIndex = 2;
-                        CURRENT_TAG = TAG_PESANAN;
-                        break;
+                        if(idToko != null){
+                            navItemIndex = 2;
+                            CURRENT_TAG = TAG_PESANAN;
+                            break;
+                        }
+                        else{
+                            Intent register = new Intent(MenuUtamaActivity.this, RegisterTokoActivity.class);
+                            register.putExtra("idKonsumen", idKonsumen);
+                            startActivity(register);
+                            //startActivity(new Intent(MenuUtamaActivity.this, KatalogJasaActivity.class));
+                            drawer.closeDrawers();
+                            return true;
+                        }
                     case R.id.nav_katalog_jasa:
                         //navItemIndex = 3;
                         //CURRENT_TAG = TAG_KATALOGJASA;
                         //break;
-                        Intent katalog = new Intent(MenuUtamaActivity.this, KatalogJasaActivity.class);
-                        katalog.putExtra("idToko", idToko);
-                        startActivity(katalog);
-                        //startActivity(new Intent(MenuUtamaActivity.this, KatalogJasaActivity.class));
-                        drawer.closeDrawers();
+                        if(idToko != null){
+                            Intent katalog = new Intent(MenuUtamaActivity.this, KatalogJasaActivity.class);
+                            katalog.putExtra("idToko", idToko);
+                            startActivity(katalog);
+                            //startActivity(new Intent(MenuUtamaActivity.this, KatalogJasaActivity.class));
+                            drawer.closeDrawers();
+                        }
+                        else{
+                            Intent register = new Intent(MenuUtamaActivity.this, RegisterTokoActivity.class);
+                            register.putExtra("idKonsumen", idKonsumen);
+                            startActivity(register);
+                            //startActivity(new Intent(MenuUtamaActivity.this, KatalogJasaActivity.class));
+                            drawer.closeDrawers();
+                        }
                         return true;
                     case R.id.nav_profil:
                         // launch new intent instead of loading fragment

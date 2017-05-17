@@ -1,7 +1,9 @@
 package com.akujasa.jasacenter;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class StatusPesananTokoSelesaiKeterangan extends AppCompatActivity {
@@ -17,6 +19,8 @@ public class StatusPesananTokoSelesaiKeterangan extends AppCompatActivity {
     TextView harga_jasa;
 
     String pesanan_id;
+    String stlintang;
+    String stbujur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class StatusPesananTokoSelesaiKeterangan extends AppCompatActivity {
         String sttanggal = getIntent().getExtras().getString("tanggal");
         String stketerangan = getIntent().getExtras().getString("keterangan");
         String stalamat = getIntent().getExtras().getString("alamat");
+        stlintang = getIntent().getExtras().getString("lintang");
+        stbujur = getIntent().getExtras().getString("bujur");
         String stjumlah = getIntent().getExtras().getString("pesanan_jumlah");
         //String stharga = getIntent().getExtras().getString("harga_jasa");
         pesanan_id = getIntent().getExtras().getString("pesanan_id");
@@ -50,5 +56,12 @@ public class StatusPesananTokoSelesaiKeterangan extends AppCompatActivity {
         alamat.setText(stalamat);
         pesanan_jumlah.setText(stjumlah);
         //harga_jasa.setText(stharga);
+    }
+
+    public void onLihatLokasi(View view){
+        Intent lihat = new Intent(StatusPesananTokoSelesaiKeterangan.this, PesananTokoMapActivity.class);
+        lihat.putExtra("lintang", stlintang);
+        lihat.putExtra("bujur", stbujur);
+        startActivity(lihat);
     }
 }

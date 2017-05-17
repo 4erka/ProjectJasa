@@ -1,14 +1,16 @@
 package com.akujasa.jasacenter;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -16,68 +18,78 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-public class StatusPesananTokoBaruKeterangan extends AppCompatActivity {
+public class RegisterTokoActivity extends AppCompatActivity {
     private String TAG = StatusPesananTokoBaruKeterangan.class.getSimpleName();
 
     private ProgressDialog progressDialog;
     private static String Jsonurl = "http://rilokukuh.com/admin-jasa/android_pj_update_pesanan.php";
-    ArrayList<HashMap<String, String>> pesananARJsonList;
+    ArrayList<HashMap<String, String>> registerTokoJsonList;
     HashMap<String, String> params = new HashMap<>();
+    String idKonsumen;
 
-    TextView nama_toko;
-    TextView nama_konsumen;
-    TextView nomor_pesanan;
-    TextView tanggal;
-    TextView keterangan;
-    TextView alamat;
-    TextView nama_jasa;
-    TextView pesanan_jumlah;
-    TextView harga_jasa;
-    ArrayList<HashMap<String, String>> dataPesananBaru;
-    String stlintang;
-    String stbujur;
-
-    String pesanan_id;
+    EditText nama_toko;
+    EditText alamat;
+    String stNama_toko;
+    String stAlamat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.status_pesanan_toko_baru_keterangan);
-        nama_konsumen = (TextView)findViewById(R.id.nama_konsumen_toko_baru_keterangan);
-        nomor_pesanan = (TextView)findViewById(R.id.nomor_jasa_toko_baru_keterangan);
-        tanggal = (TextView)findViewById(R.id.tanggal_toko_baru_keterangan);
-        keterangan = (TextView)findViewById(R.id.keterangan_toko_baru_keterangan);
-        alamat = (TextView)findViewById(R.id.alamat_toko_baru_keterangan);
-        nama_jasa = (TextView)findViewById(R.id.nama_jasa_toko_baru_keterangan);
-        pesanan_jumlah = (TextView)findViewById(R.id.jumlah_jasa_toko_baru_keterangan);
-        //harga_jasa = (TextView)findViewById(R.id.harga_toko_baru_keterangan);
-
-        //int posisi = getIntent().getExtras().getInt("nama_jasa");
-        String stnama_jasa = getIntent().getExtras().getString("nama_jasa");
-        String stnama_konsumen = getIntent().getExtras().getString("nama_konsumen");
-        String stnomor = getIntent().getExtras().getString("nomor_pesanan");
-        String sttanggal = getIntent().getExtras().getString("tanggal");
-        String stketerangan = getIntent().getExtras().getString("keterangan");
-        String stalamat = getIntent().getExtras().getString("alamat");
-        stlintang = getIntent().getExtras().getString("lintang");
-        stbujur = getIntent().getExtras().getString("bujur");
-        String stjumlah = getIntent().getExtras().getString("pesanan_jumlah");
-        //String stharga = getIntent().getExtras().getString("harga_jasa");
-        pesanan_id = getIntent().getExtras().getString("pesanan_id");
-        //Log.e(TAG, "hasil : " + x);
-        nama_jasa.setText(stnama_jasa);
-        nama_konsumen.setText(stnama_konsumen);
-        nomor_pesanan.setText(stnomor);
-        tanggal.setText(sttanggal);
-        keterangan.setText(stketerangan);
-        alamat.setText(stalamat);
-        pesanan_jumlah.setText(stjumlah);
-        //harga_jasa.setText(stharga);
-
-        pesananARJsonList = new ArrayList<>();
-
+        setContentView(R.layout.register_toko_activity);
+        idKonsumen = getIntent().getExtras().getString("idKonsumen");
+        nama_toko = (EditText)findViewById(R.id.nama_toko_register_toko) ;
+        alamat = (EditText)findViewById(R.id.alamat_toko_register_toko);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_register_toko);
+        // Spinner click listener
+        //spinner.setOnItemSelectedListener(this);
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Catering");
+        categories.add("Laundry");
+        categories.add("Tailor");
+        categories.add("Service");
+        categories.add("Wash");
+        categories.add("Household Assistent");
+        categories.add("Baby Sitter");
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //String selectedItem = parent.getItemAtPosition(position).toString();
+                Log.e(TAG, "spinner: " + position);
+                //if(selectedItem.equals("sent back"))
+                //{
+                //}
+                if (position == 0) {
+                    params.put("jpj_id", "1");
+                } else if (position == 1) {
+                    params.put("jpj_id", "2");
+                } else if (position == 2) {
+                    params.put("jpj_id", "3");
+                } else if (position == 3) {
+                    params.put("jpj_id", "4");
+                } else if (position == 4) {
+                    params.put("jpj_id", "5");
+                } else if (position == 5) {
+                    params.put("jpj_id", "8");
+                } else if (position == 6) {
+                    params.put("jpj_id", "9");
+                }
+
+            } // to close the onItemSelected
+
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -97,32 +109,19 @@ public class StatusPesananTokoBaruKeterangan extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onTerima(View view){
-        params.put("psn_id", pesanan_id);
-        params.put("stat_id", "2");
-        new GetAPIPesananAR().execute();
+    public void onRegisterToko(View view){
+        stNama_toko = nama_toko.getText().toString();
+        stAlamat = alamat.getText().toString();
+        new GetAPIRegisterToko().execute();
     }
 
-    public void onTolak(View view){
-        params.put("psn_id", pesanan_id);
-        params.put("stat_id", "8");
-        new GetAPIPesananAR().execute();
-    }
-
-    public void onLihatLokasi(View view){
-        Intent lihat = new Intent(StatusPesananTokoBaruKeterangan.this, PesananTokoMapActivity.class);
-        lihat.putExtra("lintang", stlintang);
-        lihat.putExtra("bujur", stbujur);
-        startActivity(lihat);
-    }
-
-    private class GetAPIPesananAR extends AsyncTask<Void, Void, Void> {
+    private class GetAPIRegisterToko extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            progressDialog = new ProgressDialog(StatusPesananTokoBaruKeterangan.this);
+            progressDialog = new ProgressDialog(RegisterTokoActivity.this);
             progressDialog.setMessage("Please wait...");
             progressDialog.setCancelable(false);
             progressDialog.show();
@@ -131,6 +130,12 @@ public class StatusPesananTokoBaruKeterangan extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... arg0) {
             HttpHandler httpHandler = new HttpHandler();
+
+            params.put("ksm_id", idKonsumen);
+            params.put("pj_nama", stNama_toko);
+            params.put("pj_alamat", stAlamat);
+            params.put("pj_lintang", "0");
+            params.put("pj_bujur", "0");
 
             // request to json data url and getting response
             String jsonString = httpHandler.makeServiceCall(Jsonurl, params);
@@ -151,8 +156,8 @@ public class StatusPesananTokoBaruKeterangan extends AppCompatActivity {
                     katalog.put("status", status);
                     katalog.put("message", message);
 
-                    pesananARJsonList.add(katalog);
-                    Log.e(TAG, "Response json: " + pesananARJsonList);
+                    registerTokoJsonList.add(katalog);
+                    Log.e(TAG, "Response json: " + registerTokoJsonList);
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -189,13 +194,17 @@ public class StatusPesananTokoBaruKeterangan extends AppCompatActivity {
             // Dismiss the progress dialog
             if (progressDialog.isShowing())
                 progressDialog.dismiss();
-            Log.e(TAG, "test: " + pesananARJsonList.get(0).get("message"));
-            if(pesananARJsonList.get(0).get("message").equals("update status success")){
+            Log.e(TAG, "test: " + registerTokoJsonList.get(0).get("message"));
+            if(registerTokoJsonList.get(0).get("message").equals("update status success")){
+                Toast.makeText(getApplicationContext(),
+                        "Register berhasil",
+                        Toast.LENGTH_LONG)
+                        .show();
                 onBackPressed();
             }
             else{
                 Toast.makeText(getApplicationContext(),
-                        "Username / Password Salah",
+                        "Register gagal",
                         Toast.LENGTH_LONG)
                         .show();
             }

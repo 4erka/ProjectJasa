@@ -57,6 +57,8 @@ public class StatusPesananTokoSelesai extends Fragment{
                 pesananbaruketerangan.putExtra("tanggal", pesananSelesaiJsonList.get(position).get("psn_datetime"));
                 pesananbaruketerangan.putExtra("keterangan", pesananSelesaiJsonList.get(position).get("psn_keterangan"));
                 pesananbaruketerangan.putExtra("alamat", pesananSelesaiJsonList.get(position).get("psn_alamat"));
+                pesananbaruketerangan.putExtra("lintang", pesananSelesaiJsonList.get(position).get("psn_lintang"));
+                pesananbaruketerangan.putExtra("bujur", pesananSelesaiJsonList.get(position).get("psn_bujur"));
                 pesananbaruketerangan.putExtra("pesanan_id", pesananSelesaiJsonList.get(position).get("psn_id"));
                 pesananbaruketerangan.putExtra("pesanan_jumlah", pesananSelesaiJsonList.get(position).get("psn_jumlah"));
                 //startActivityForResult(pesananbaruketerangan, 0); //I always put 0 for someIntValue
@@ -115,6 +117,8 @@ public class StatusPesananTokoSelesai extends Fragment{
                         String tanggal = c.getString("psn_datetime");
                         String keterangan = c.getString("psn_keterangan");
                         String alamat = c.getString("psn_alamat");
+                        String lintang = c.getString("psn_lintang");
+                        String bujur = c.getString("psn_bujur");
                         String pesananan_id = c.getString("psn_id");
                         String harga = c.getString("psn_jumlah");
 
@@ -128,6 +132,8 @@ public class StatusPesananTokoSelesai extends Fragment{
                         data.put("psn_datetime", tanggal);
                         data.put("psn_keterangan", keterangan);
                         data.put("psn_alamat", alamat);
+                        data.put("psn_lintang", lintang);
+                        data.put("psn_bujur", bujur);
                         data.put("psn_id", pesananan_id);
                         data.put("psn_jumlah", harga);
 

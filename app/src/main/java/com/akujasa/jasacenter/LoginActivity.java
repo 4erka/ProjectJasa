@@ -136,10 +136,6 @@ public class LoginActivity extends AppCompatActivity {
                 Log.e(TAG, "idToko1: " + idToko);
             }
             else{
-                Toast.makeText(getApplicationContext(),
-                        "Username / Password Salah",
-                        Toast.LENGTH_LONG)
-                        .show();
             }
             /**
              * Updating parsed JSON data into ListView

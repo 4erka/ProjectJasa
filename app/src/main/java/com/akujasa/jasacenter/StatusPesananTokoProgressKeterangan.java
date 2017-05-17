@@ -41,6 +41,8 @@ public class StatusPesananTokoProgressKeterangan extends AppCompatActivity {
     ArrayList<HashMap<String, String>> dataPesananBaru;
 
     String pesanan_id;
+    String stlintang;
+    String stbujur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,8 @@ public class StatusPesananTokoProgressKeterangan extends AppCompatActivity {
         String sttanggal = getIntent().getExtras().getString("tanggal");
         String stketerangan = getIntent().getExtras().getString("keterangan");
         String stalamat = getIntent().getExtras().getString("alamat");
+        stlintang = getIntent().getExtras().getString("lintang");
+        stbujur = getIntent().getExtras().getString("bujur");
         String stjumlah = getIntent().getExtras().getString("pesanan_jumlah");
         //String stharga = getIntent().getExtras().getString("harga_jasa");
         pesanan_id = getIntent().getExtras().getString("pesanan_id");
@@ -151,6 +155,13 @@ public class StatusPesananTokoProgressKeterangan extends AppCompatActivity {
         params.put("stat_id", "7");
         new GetAPIGantiStatus().execute();
         onBackPressed();
+    }
+
+    public void onLihatLokasi(View view){
+        Intent lihat = new Intent(StatusPesananTokoProgressKeterangan.this, PesananTokoMapActivity.class);
+        lihat.putExtra("lintang", stlintang);
+        lihat.putExtra("bujur", stbujur);
+        startActivity(lihat);
     }
 
     private class GetAPIGantiStatus extends AsyncTask<Void, Void, Void> {
