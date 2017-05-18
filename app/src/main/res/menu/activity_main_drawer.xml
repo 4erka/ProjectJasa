@@ -4,11 +4,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_carijasa"
-            android:icon="@drawable/ic_home_black_24dp"
+            android:icon="@drawable/ic_search_black_24dp"
             android:title="Cari Jasa" />
         <item
             android:id="@+id/nav_statuspesanan"
-            android:icon="@drawable/ic_photo_library_black_24dp"
+            android:icon="@drawable/ic_view_list_black_24dp"
             android:title="Status Pesanan" />
     </group>
 
@@ -17,10 +17,12 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_pesanan"
-                    android:title="@string/nav_pesanan" />
+                    android:title="@string/nav_pesanan"
+                    android:icon="@drawable/ic_view_list_black_24dp"/>
                 <item
                     android:id="@+id/nav_katalog_jasa"
-                    android:title="@string/nav_katalog_jasa" />
+                    android:title="@string/nav_katalog_jasa"
+                    android:icon="@drawable/ic_assignment_black_24dp"/>
             </group>
         </menu>
     </item>
