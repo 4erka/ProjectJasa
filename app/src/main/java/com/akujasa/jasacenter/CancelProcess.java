@@ -57,8 +57,8 @@ public class CancelProcess extends AsyncTask {
             JSONObject jsonOBJ = new JSONObject(sb.toString());
             String status = jsonOBJ.getString("status");
             String message = jsonOBJ.getString("message");
-            id = jsonOBJ.getString("id");
-            return message;
+            //id = jsonOBJ.getString("id");
+            return status;
         }
         catch (Exception e){
             return new String("Exception: "+e.getMessage());
@@ -70,14 +70,14 @@ public class CancelProcess extends AsyncTask {
         this.status = (String)o;
         //
         if(status.equals("200")) {
-            Toast.makeText(context,"Selamat Datang!",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Batalkan pesanan berhasil!",Toast.LENGTH_LONG).show();
             Intent intentku = new Intent(context, StatusPesananFragment.class);
             context.startActivity(intentku);
             ((Activity)context).finish();
         }
 
         else{
-            Toast.makeText(context,"Koneksi terganggu/tidak ada!",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,status,Toast.LENGTH_LONG).show();
         }
     }
 

@@ -51,32 +51,7 @@ public class PesananInfoCancel extends AppCompatActivity {
         btCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
-
-                builder.setTitle("Pembatalan Pesanan");
-                builder.setMessage("Apakah anda yakin ingin membatalkan pesanan?");
-
-                builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
                         new CancelProcess(getBaseContext()).execute(tvIdPesanan.getText().toString());
-                        dialog.dismiss();
-                    }
-                });
-
-                builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        // Do nothing
-                        dialog.dismiss();
-                    }
-                });
-
-                AlertDialog alert = builder.create();
-                alert.show();
 
             }
         });
