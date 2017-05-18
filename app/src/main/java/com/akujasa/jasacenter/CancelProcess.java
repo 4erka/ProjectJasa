@@ -77,7 +77,7 @@ public class CancelProcess extends AsyncTask {
         }
 
         else{
-            Toast.makeText(context,status,Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Koneksi terganggu/tidak ada!",Toast.LENGTH_LONG).show();
         }
     }
 
