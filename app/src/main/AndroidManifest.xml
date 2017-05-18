@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -55,7 +55,10 @@
             android:label="@string/title_activity_pesanan_toko_map" />
         <activity
             android:name=".RegisterTokoMap"
-            android:label="@string/title_activity_register_toko_map"></activity>
+            android:label="@string/title_activity_register_toko_map" />
+        <activity android:name=".PesananInfo" />
+        <activity android:name=".PesananInfoCancel" />
+        <activity android:name=".PesananInfoSelesai"></activity>
     </application>
 
 </manifest>

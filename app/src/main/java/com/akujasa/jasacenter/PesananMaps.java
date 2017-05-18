@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ import java.util.Locale;
 import static com.akujasa.jasacenter.R.drawable.location;
 import static java.security.AccessController.getContext;
 
-public class PesananMaps extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
+public class PesananMaps extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
@@ -138,7 +139,7 @@ public class PesananMaps extends FragmentActivity implements OnMapReadyCallback,
             public void onCameraIdle() {
                 Lat = mMap.getCameraPosition().target.latitude;
                 Lang = mMap.getCameraPosition().target.longitude;
-                Toast.makeText(getBaseContext(),"Ketemu:",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(),"Ketemu:",Toast.LENGTH_SHORT).show();
                 Geocoder geocoder;
                 List<Address> addresses;
                 geocoder = new Geocoder(getBaseContext(), Locale.getDefault());
