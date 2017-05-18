@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="16dp"
-    android:paddingLeft="64dp"
-    android:paddingRight="64dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
     android:paddingTop="16dp"
     tools:context="com.akujasa.jasacenter.LoginActivity">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:src="@drawable/jasa_logo"
         android:layout_centerHorizontal="true"/>
 
@@ -21,8 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:gravity="center"
-        android:layout_marginTop="180dp"
+        android:gravity="left"
+        android:layout_marginTop="150dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:id="@+id/inputemail"/>
@@ -34,7 +34,7 @@
         android:layout_below="@id/inputemail"
         android:layout_marginTop="20dp"
         android:hint="Password"
-        android:gravity="center"
+        android:gravity="left"
         android:id="@+id/inputpass"/>
 
     <Button
@@ -43,21 +43,31 @@
         android:text="LOGIN"
         android:layout_below="@+id/inputpass"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:id="@+id/inputlogin"
         android:onClick="onLogin"
         android:background="@android:color/holo_red_dark"
         android:textColor="@android:color/white"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Belum punya akun?"
+        android:layout_below="@+id/inputlogin"
+        android:id="@+id/belumpunya"
+        android:layout_marginTop="25dp"
+        android:textSize="16dp"
+        android:textColor="@color/colorPrimary"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="REGISTER"
-        android:layout_below="@+id/inputlogin"
+        android:layout_below="@+id/belumpunya"
         android:id="@+id/inputregister"
-        android:layout_marginTop="20dp"
         android:onClick="onRegis"
         android:background="@android:color/holo_red_dark"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:layout_marginTop="5dp"/>
 
 </RelativeLayout>
