@@ -52,13 +52,14 @@ public class RegisterTokoActivity extends AppCompatActivity {
         //spinner.setOnItemSelectedListener(this);
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("Catering");
+        categories.add("Katering");
         categories.add("Laundry");
-        categories.add("Tailor");
-        categories.add("Service");
-        categories.add("Wash");
-        categories.add("Household Assistent");
-        categories.add("Baby Sitter");
+        categories.add("Jahit");
+        categories.add("Servis Elektronik");
+        categories.add("Cuci");
+        categories.add("Servis Kendaraan");
+        categories.add("Asisten Rumah");
+        categories.add("Pengasuh Bayi");
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
         // Drop down layout style - list view with radio button
@@ -83,6 +84,8 @@ public class RegisterTokoActivity extends AppCompatActivity {
                 } else if (position == 4) {
                     params.put("jpj_id", "5");
                 } else if (position == 5) {
+                    params.put("jpj_id", "6");
+                } else if (position == 6) {
                     params.put("jpj_id", "8");
                 } else if (position == 6) {
                     params.put("jpj_id", "9");
