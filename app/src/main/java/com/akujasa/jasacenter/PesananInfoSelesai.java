@@ -51,6 +51,7 @@ public class PesananInfoSelesai extends AppCompatActivity {
         btSelesai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new RateProcess(PesananInfoSelesai.this).execute(tvIdPesanan.getText().toString());
 
             }
         });

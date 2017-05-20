@@ -31,7 +31,7 @@ public class PesanformActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SharedPreferences sp = this.getSharedPreferences("pencari_info",MODE_PRIVATE);
         id_pencari = sp.getString("pencari_id","a");
-        Toast.makeText(this, id_pencari, Toast.LENGTH_SHORT).show();
+
         setContentView(R.layout.activity_pesanform);
         Intent intentku = getIntent();
         String jumlah = intentku.getStringExtra("jumlah");

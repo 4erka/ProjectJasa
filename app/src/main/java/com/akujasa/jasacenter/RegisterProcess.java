@@ -33,8 +33,8 @@ public class RegisterProcess extends AsyncTask {
 
         try{
             String nama = (String)objects[0];
-            String alamat = (String)objects[1];
-            String email = (String)objects[2];
+            String alamat = (String)objects[2];
+            String email = (String)objects[1];
             String nohp = (String)objects[3];
             String password = (String)objects[4];
             String ulangi_password = (String)objects[5];

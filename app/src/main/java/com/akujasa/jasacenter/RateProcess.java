@@ -19,15 +19,15 @@ import java.net.URLEncoder;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * Created by Antonius on 18/05/2017.
+ * Created by Antonius on 20/05/2017.
  */
 
-public class CancelProcess extends AsyncTask {
+public class RateProcess extends AsyncTask {
     private String status;
     private Context context;
     private String id;
     private String idToko;
-    public CancelProcess(Context context){
+    public RateProcess(Context context){
         this.context = context;
 
     }
@@ -37,7 +37,7 @@ public class CancelProcess extends AsyncTask {
 
         try{
             String psn_id = (String)objects[0];
-            String stat_id = "9";
+            String stat_id = "11";
             //emails = email;
             String link = "http://rilokukuh.com/admin-jasa/android_pj_update_pesanan.php";
             String data = URLEncoder.encode("psn_id","UTF-8")+"="+URLEncoder.encode(psn_id,"UTF-8");
@@ -72,7 +72,7 @@ public class CancelProcess extends AsyncTask {
         this.status = (String)o;
         //
         if(status.equals("200")) {
-            Toast.makeText(context,"Batalkan pesanan berhasil!",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Rating pesanan berhasil! Terima kasih!!",Toast.LENGTH_LONG).show();
             SharedPreferences sp = context.getSharedPreferences("pencari_info",MODE_PRIVATE);
             String id_pencari = sp.getString("pencari_id","a");
             Intent intentku = new Intent(context, MenuUtamaActivity.class);
@@ -85,6 +85,4 @@ public class CancelProcess extends AsyncTask {
             Toast.makeText(context,"Koneksi terganggu/tidak ada!",Toast.LENGTH_LONG).show();
         }
     }
-
-
 }

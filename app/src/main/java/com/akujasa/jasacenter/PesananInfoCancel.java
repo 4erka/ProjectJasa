@@ -51,7 +51,7 @@ public class PesananInfoCancel extends AppCompatActivity {
         btCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        new CancelProcess(getBaseContext()).execute(tvIdPesanan.getText().toString());
+                        new CancelProcess(PesananInfoCancel.this).execute(tvIdPesanan.getText().toString());
 
             }
         });

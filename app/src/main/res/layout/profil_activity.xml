@@ -92,7 +92,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Almamat"
+                android:text="Alamat"
                 android:textSize="15dp"/>
             <TextView
                 android:layout_width="match_parent"
@@ -140,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="edit"
-            android:onClick="onEditProf"
+            android:id="@+id/profiledit"
             android:background="@android:color/holo_red_dark"
             android:textColor="@android:color/white"/>
 

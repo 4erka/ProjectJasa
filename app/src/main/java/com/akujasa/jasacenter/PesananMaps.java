@@ -1,6 +1,7 @@
 package com.akujasa.jasacenter;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -73,6 +74,7 @@ public class PesananMaps extends AppCompatActivity implements OnMapReadyCallback
                 intentku.putExtra("latitutde",Latitude);
                 intentku.putExtra("longitude",Longitude);
                 startActivity(intentku);
+                PesananMaps.this.finish();
 
             }
         });

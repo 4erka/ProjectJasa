@@ -75,23 +75,25 @@ public class ListSelesaiProcess extends AsyncTask{
 
             Log.e("A",sb.toString());
             String status = jsonOBJ.getString("status");
-            JSONArray listJasa = jsonOBJ.getJSONArray("data");
-            for (int i = 0; i < listJasa.length(); i++) {
-                JSONObject jasa_info = listJasa.getJSONObject(i);
-                id_pesanan = jasa_info.getString("psn_id");
-                id_penyedia = jasa_info.getString("pj_id");
-                id_status = jasa_info.getString("stat_id");
-                nama_penyedia = jasa_info.getString("pj_nama_jasa");
-                tanggal_jasa = jasa_info.getString("psn_datetime");
-                harga_jasa = jasa_info.getString("jasa_harga");
-                jumlah_jasa = jasa_info.getString("psn_jumlah");
-                alamat_jasa = jasa_info.getString("psn_alamat");
-                ket_jasa = jasa_info.getString("psn_keterangan");
-                nama_jasa = jasa_info.getString("jasa_nama");
-                listku.add(new ItemPesanan(id_pesanan, id_penyedia,id_status, nama_penyedia,tanggal_jasa,harga_jasa,jumlah_jasa, alamat_jasa,ket_jasa, nama_jasa));
+            if(status.equals("200")) {
+                JSONArray listJasa = jsonOBJ.getJSONArray("data");
+                for (int i = 0; i < listJasa.length(); i++) {
+                    JSONObject jasa_info = listJasa.getJSONObject(i);
+                    id_pesanan = jasa_info.getString("psn_id");
+                    id_penyedia = jasa_info.getString("pj_id");
+                    id_status = jasa_info.getString("stat_id");
+                    nama_penyedia = jasa_info.getString("pj_nama_jasa");
+                    tanggal_jasa = jasa_info.getString("psn_datetime");
+                    harga_jasa = jasa_info.getString("jasa_harga");
+                    jumlah_jasa = jasa_info.getString("psn_jumlah");
+                    alamat_jasa = jasa_info.getString("psn_alamat");
+                    ket_jasa = jasa_info.getString("psn_keterangan");
+                    nama_jasa = jasa_info.getString("jasa_nama");
+                    listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa));
 
+                }
             }
-            if(status.equals("200")){
+
                 stat_id="9";
                 link = "http://rilokukuh.com/admin-jasa/android_ksm_get_pesanan.php";
                 data = URLEncoder.encode("ksm_id","UTF-8")+"="+URLEncoder.encode(ksm_id,"UTF-8");
@@ -114,24 +116,26 @@ public class ListSelesaiProcess extends AsyncTask{
 
                 Log.e("A",sb.toString());
                 status = jsonOBJ.getString("status");
-                listJasa = jsonOBJ.getJSONArray("data");
-                for (int i = 0; i < listJasa.length(); i++) {
-                    JSONObject jasa_info = listJasa.getJSONObject(i);
-                    id_pesanan = jasa_info.getString("psn_id");
-                    id_penyedia = jasa_info.getString("pj_id");
-                    id_status = jasa_info.getString("stat_id");
-                    nama_penyedia = jasa_info.getString("pj_nama_jasa");
-                    tanggal_jasa = jasa_info.getString("psn_datetime");
-                    harga_jasa = jasa_info.getString("jasa_harga");
-                    jumlah_jasa = jasa_info.getString("psn_jumlah");
-                    alamat_jasa = jasa_info.getString("psn_alamat");
-                    ket_jasa = jasa_info.getString("psn_keterangan");
-                    nama_jasa = jasa_info.getString("jasa_nama");
-                    listku.add(new ItemPesanan(id_pesanan, id_penyedia,id_status, nama_penyedia,tanggal_jasa,harga_jasa,jumlah_jasa, alamat_jasa,ket_jasa, nama_jasa));
+                if(status.equals("200")) {
+                    JSONArray listJasa = jsonOBJ.getJSONArray("data");
+                    for (int i = 0; i < listJasa.length(); i++) {
+                        JSONObject jasa_info = listJasa.getJSONObject(i);
+                        id_pesanan = jasa_info.getString("psn_id");
+                        id_penyedia = jasa_info.getString("pj_id");
+                        id_status = jasa_info.getString("stat_id");
+                        nama_penyedia = jasa_info.getString("pj_nama_jasa");
+                        tanggal_jasa = jasa_info.getString("psn_datetime");
+                        harga_jasa = jasa_info.getString("jasa_harga");
+                        jumlah_jasa = jasa_info.getString("psn_jumlah");
+                        alamat_jasa = jasa_info.getString("psn_alamat");
+                        ket_jasa = jasa_info.getString("psn_keterangan");
+                        nama_jasa = jasa_info.getString("jasa_nama");
+                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa));
+                    }
                 }
-                return status;
-            }
-            if(status.equals("200")){
+
+
+
                 stat_id="8";
                 link = "http://rilokukuh.com/admin-jasa/android_ksm_get_pesanan.php";
                 data = URLEncoder.encode("ksm_id","UTF-8")+"="+URLEncoder.encode(ksm_id,"UTF-8");
@@ -154,7 +158,50 @@ public class ListSelesaiProcess extends AsyncTask{
 
                 Log.e("A",sb.toString());
                 status = jsonOBJ.getString("status");
-                listJasa = jsonOBJ.getJSONArray("data");
+                if(status.equals("200")) {
+                    JSONArray listJasa = jsonOBJ.getJSONArray("data");
+                    for (int i = 0; i < listJasa.length(); i++) {
+                        JSONObject jasa_info = listJasa.getJSONObject(i);
+                        id_pesanan = jasa_info.getString("psn_id");
+                        id_penyedia = jasa_info.getString("pj_id");
+                        id_status = jasa_info.getString("stat_id");
+                        nama_penyedia = jasa_info.getString("pj_nama_jasa");
+                        tanggal_jasa = jasa_info.getString("psn_datetime");
+                        harga_jasa = jasa_info.getString("jasa_harga");
+                        jumlah_jasa = jasa_info.getString("psn_jumlah");
+                        alamat_jasa = jasa_info.getString("psn_alamat");
+                        ket_jasa = jasa_info.getString("psn_keterangan");
+                        nama_jasa = jasa_info.getString("jasa_nama");
+                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa));
+                    }
+                }
+
+
+
+                stat_id="11";
+                link = "http://rilokukuh.com/admin-jasa/android_ksm_get_pesanan.php";
+                data = URLEncoder.encode("ksm_id","UTF-8")+"="+URLEncoder.encode(ksm_id,"UTF-8");
+                data += "&"+URLEncoder.encode("stat_id","UTF-8")+"="+URLEncoder.encode(stat_id,"UTF-8");
+                url = new URL(link);
+                conn = url.openConnection();
+                conn.setDoOutput(true);
+                wr = new OutputStreamWriter(conn.getOutputStream());
+                wr.write(data);
+                wr.flush();
+
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                sb = new StringBuilder();
+                line = null;
+                while((line=reader.readLine())!=null){
+                    sb.append(line);
+                    break;
+                }
+                jsonOBJ = new JSONObject(sb.toString());
+
+                Log.e("A",sb.toString());
+                if(status.equals("200")){
+                status = jsonOBJ.getString("status");
+                JSONArray listJasa = jsonOBJ.getJSONArray("data");
                 for (int i = 0; i < listJasa.length(); i++) {
                     JSONObject jasa_info = listJasa.getJSONObject(i);
                     id_pesanan = jasa_info.getString("psn_id");
@@ -169,12 +216,11 @@ public class ListSelesaiProcess extends AsyncTask{
                     nama_jasa = jasa_info.getString("jasa_nama");
                     listku.add(new ItemPesanan(id_pesanan, id_penyedia,id_status, nama_penyedia,tanggal_jasa,harga_jasa,jumlah_jasa, alamat_jasa,ket_jasa, nama_jasa));
                 }
-                return status;
-            }
+
+                }
 
 
-
-            else return status;
+            return status;
         }
         catch (Exception e){
             return new String("Exception: "+e.getMessage());
@@ -185,7 +231,6 @@ public class ListSelesaiProcess extends AsyncTask{
     protected void onPostExecute(Object o) {
         this.status = (String)o;
         //
-        if(status.equals("200")) {
             PesananListAdapter adapterku = new PesananListAdapter(context, 0, listku);
             lvList.setAdapter(adapterku);
             lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -206,9 +251,9 @@ public class ListSelesaiProcess extends AsyncTask{
                         intentku.putExtra("status", stat);
                         context.startActivity(intentku);
                     }
-                    else if(id_stat.equals("7")){
+                    else if(id_stat.equals("11")){
                         String stat = "Selesai";
-                        Intent intentku = new Intent(context, PesananInfoSelesai.class);
+                        Intent intentku = new Intent(context, PesananInfo.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
                         intentku.putExtra("status", stat);
                         context.startActivity(intentku);
@@ -216,10 +261,7 @@ public class ListSelesaiProcess extends AsyncTask{
 
                 }
             });
-        }
-        else{
-            Toast.makeText(context,"Koneksi terganggu/tidak ada!",Toast.LENGTH_LONG).show();
-        }
+
     }
 
 }

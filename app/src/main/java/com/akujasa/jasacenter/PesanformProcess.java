@@ -44,7 +44,7 @@ public class PesanformProcess extends AsyncTask{
             String lintang = (String)objects[3];
             String bujur = (String)objects[4];
             String alamat = (String)objects[5];
-            String jumlah = (String)objects[5];
+            String jumlah = (String)objects[6];
             //emails = email;
             String link = "http://rilokukuh.com/admin-jasa/android_ksm_create_pesanan.php";
             String data = URLEncoder.encode("jasa_id","UTF-8")+"="+URLEncoder.encode(jasa_id,"UTF-8");
