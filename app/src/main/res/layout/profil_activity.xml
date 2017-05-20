@@ -13,27 +13,27 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:id="@+id/editgambarheader"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
-            <!--<ImageView
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:src="@drawable/candi"
-                android:scaleType="centerCrop"/>-->
+                android:scaleType="centerCrop"/>
 
-            <!--<ImageView
+            <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:src="@drawable/user"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
-                android:scaleType="centerCrop"/>-->
+                android:scaleType="centerCrop"/>
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,8 +55,8 @@
                 android:textColor="@android:color/black"
                 android:id="@+id/profilnama"
                 android:textSize="17dp"
-                android:layout_below="@id/editgambarheader">
-            </TextView>
+
+            />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
