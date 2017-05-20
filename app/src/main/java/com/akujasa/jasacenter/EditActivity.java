@@ -33,5 +33,4 @@ public class EditActivity extends AppCompatActivity {
        new InfoEditViewProcess(this,etNama,etEmail,etAlamat,etNohp).execute(id_pencari);
     }
 
-
 }
