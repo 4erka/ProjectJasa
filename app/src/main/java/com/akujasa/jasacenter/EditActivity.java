@@ -19,18 +19,18 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.edit_activity);
         SharedPreferences sp = this.getSharedPreferences("pencari_info",MODE_PRIVATE);
         final String id_pencari = sp.getString("pencari_id","a");
-        etNama = (EditText)findViewById(R.id.regisnama);
-        etEmail = (EditText)findViewById(R.id.regisemail);
-        etAlamat = (EditText)findViewById(R.id.regisalamat);
-        etNohp = (EditText)findViewById(R.id.regisnohp);
+        etNama = (EditText)findViewById(R.id.editnama);
+        etEmail = (EditText)findViewById(R.id.editemail);
+        etAlamat = (EditText)findViewById(R.id.editalamat);
+        etNohp = (EditText)findViewById(R.id.editnohp);
         btEdit = (Button)findViewById(R.id.btEdit);
         btEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new EditProcess(getBaseContext()).execute(etNama.getText().toString(),etEmail.getText().toString(),etAlamat.getText().toString(),etNohp.getText().toString(),id_pencari);
+                new EditProcess(EditActivity.this).execute(etNama.getText().toString(),etEmail.getText().toString(),etAlamat.getText().toString(),etNohp.getText().toString(),id_pencari);
             }
         });
-       new InfoEditViewProcess(this,etNama,etEmail,etAlamat,etNohp).execute("");
+       new InfoEditViewProcess(this,etNama,etEmail,etAlamat,etNohp).execute(id_pencari);
     }
 
 

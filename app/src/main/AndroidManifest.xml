@@ -57,6 +57,7 @@
             android:name=".RegisterTokoMap"
             android:label="@string/title_activity_register_toko_map" />
         <activity android:name=".PesananInfo" />
+        <activity android:name=".EditActivity" />
         <activity android:name=".PesananInfoCancel" />
         <activity android:name=".PesananInfoSelesai"></activity>
     </application>

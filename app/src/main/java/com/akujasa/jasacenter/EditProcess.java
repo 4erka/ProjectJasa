@@ -63,7 +63,7 @@ public class EditProcess extends AsyncTask {
             String status = jsonOBJ.getString("status");
             String message = jsonOBJ.getString("message");
 
-            return message;
+            return status;
         }
         catch (Exception e){
             return new String("Exception: "+e.getMessage());
@@ -74,20 +74,15 @@ public class EditProcess extends AsyncTask {
     protected void onPostExecute(Object o) {
         this.status = (String)o;
 
-        if(status.equals("success")) {
+        if(status.equals("200")) {
             Toast.makeText(context,"Edit profil berhasil!",Toast.LENGTH_LONG).show();
-            Intent intentku = new Intent(context, ProfilActivity.class);
+            Intent intentku = new Intent(context , ProfilActivity.class);
             context.startActivity(intentku);
             ((Activity)context).finish();
         }
-        else if(status.equals("email sudah digunakan")){
-            Toast.makeText(context,"Email sudah pernah digunakan!",Toast.LENGTH_SHORT).show();
-        }
-        else if(status.equals("password tidak cocok")){
-            Toast.makeText(context,"Ulangi password salah!",Toast.LENGTH_SHORT).show();
-        }
+
         else{
-            Toast.makeText(context,"Koneksi terganggu/tidak ada!",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,status,Toast.LENGTH_LONG).show();
         }
     }
 }
