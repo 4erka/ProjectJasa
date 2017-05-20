@@ -301,6 +301,13 @@ public class MenuUtamaActivity extends AppCompatActivity {
                             drawer.closeDrawers();
                         }
                         return true;
+                    case R.id.nav_profil_toko:
+                        Intent proftoko = new Intent(MenuUtamaActivity.this, ProfilTokoActivity.class);
+                        proftoko.putExtra("idToko", idToko);
+                        startActivity(proftoko);
+                        //startActivity(new Intent(MenuUtamaActivity.this, KatalogJasaActivity.class));
+                        drawer.closeDrawers();
+                        return true;
                     case R.id.nav_profil:
                         // launch new intent instead of loading fragment
                         startActivity(new Intent(MenuUtamaActivity.this, ProfilActivity.class));
@@ -395,6 +402,7 @@ public class MenuUtamaActivity extends AppCompatActivity {
         return true;
     }
 
+    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -410,4 +418,5 @@ public class MenuUtamaActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    */
 }

@@ -59,7 +59,9 @@
         <activity android:name=".PesananInfo" />
         <activity android:name=".EditActivity" />
         <activity android:name=".PesananInfoCancel" />
-        <activity android:name=".PesananInfoSelesai"></activity>
+        <activity android:name=".PesananInfoSelesai" />
+        <activity android:name=".ProfilTokoActivity" />
+        <activity android:name=".ProfilTokoEditActivity"></activity>
     </application>
 
 </manifest>

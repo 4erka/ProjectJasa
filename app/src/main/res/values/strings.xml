@@ -16,6 +16,7 @@
     <string name="nav_settings">Settings</string>
     <string name="nav_about_us">About Us</string>
     <string name="nav_profil">Profil</string>
+    <string name="nav_profil_toko">Profil Toko</string>
     <string name="nav_keluar">Keluar</string>
 
     <!-- Toolbar titles when navigation menu item is selected -->
@@ -23,10 +24,10 @@
         <item>Cari Jasa</item>
         <item>Status Pesanan</item>
         <item>Pesanan</item>
-        <item>Katalog Jasa</item>
         <item>Toko</item>
-        <item>Notifications</item>
-        <item>Settings</item>
+        <item>Katalog Jasa</item>
+        <item>ProfilToko</item>
+        <item>Akun</item>
         <item>Profil</item>
         <item>Keluar</item>
     </string-array>

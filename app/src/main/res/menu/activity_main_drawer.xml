@@ -23,6 +23,9 @@
                     android:id="@+id/nav_katalog_jasa"
                     android:title="@string/nav_katalog_jasa"
                     android:icon="@drawable/ic_assignment_black_24dp"/>
+                <item
+                    android:id="@+id/nav_profil_toko"
+                    android:title="@string/nav_profil_toko"/>
             </group>
         </menu>
     </item>
