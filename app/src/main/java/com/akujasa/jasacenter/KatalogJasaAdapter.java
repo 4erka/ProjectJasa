@@ -39,14 +39,18 @@ public class KatalogJasaAdapter extends BaseAdapter implements ListAdapter {
     String id;
     String idToko;
     String namaJasa;
-    private ArrayList<HashMap<String, String>> namaJasaJson;
+    String keteranganJasa;
+    String hargaJasa;
+    private ArrayList<HashMap<String, String>> dataJasaJson;
+    private ArrayList<HashMap<String, String>> dataNamaJasaJson;
 
-    public KatalogJasaAdapter(ArrayList<String> list, Context context, ArrayList<HashMap<String, String>> katalogIdJasa, ArrayList<HashMap<String, String>> namaJasaJson, String idToko) {
+    public KatalogJasaAdapter(ArrayList<String> list, Context context, ArrayList<HashMap<String, String>> katalogIdJasa, ArrayList<HashMap<String, String>> dataJasaJson, ArrayList<HashMap<String, String>> dataNamaJasaJson,String idToko) {
         this.list = list;
         this.context = context;
         this.katalogIdJasa = katalogIdJasa;
         this.idToko = idToko;
-        this.namaJasaJson = namaJasaJson;
+        this.dataJasaJson = dataJasaJson;
+        this.dataNamaJasaJson = dataNamaJasaJson;
     }
 
     @Override
@@ -87,11 +91,15 @@ public class KatalogJasaAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 //do something
                 Intent tambah = new Intent(context, KatalogJasaEdit.class);
-                namaJasa = namaJasaJson.get(position).get("jasa_nama");
+                namaJasa = dataNamaJasaJson.get(position).get("jasa_nama");
+                keteranganJasa = dataJasaJson.get(position).get("jasa_deskripsi");
+                hargaJasa = dataJasaJson.get(position).get("jasa_harga");
                 id = katalogIdJasa.get(position).get("jasa_id");
                 tambah.putExtra("jasa_id", id);
                 tambah.putExtra("idToko", idToko);
                 tambah.putExtra("jasa_nama", namaJasa);
+                tambah.putExtra("jasa_deskripsi", keteranganJasa);
+                tambah.putExtra("jasa_harga", hargaJasa);
                 context.startActivity(tambah);
                 notifyDataSetChanged();
             }

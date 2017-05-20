@@ -29,19 +29,39 @@
             android:textColor="@android:color/black"/>
     </LinearLayout>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Keterangan Paket / Item"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/keterangan_katalog_jasa_edit"/>
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/keterangan_katalog_edit"
+            android:textSize="14dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Keterangan Paket / Item"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/keterangan_katalog_jasa_edit"/>
+    </LinearLayout>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Harga"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/harga_katalog_jasa_edit"/>
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/harga_katalog_edit"
+            android:textSize="14dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Harga"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/harga_katalog_jasa_edit"/>
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"

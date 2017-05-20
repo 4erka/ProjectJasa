@@ -40,6 +40,7 @@ public class KatalogJasaActivity extends AppCompatActivity{
     // JSON data url
     private static String Jsonurl = "http://rilokukuh.com/admin-jasa/android_get_katalog.php";
     private static String JsonurlHapus = "http://rilokukuh.com/admin-jasa/android_delete_katalog.php";
+    ArrayList<HashMap<String, String>> katalogNamaJsonList;
     ArrayList<HashMap<String, String>> katalogJsonList;
     ArrayList<HashMap<String, String>> katalogIdJsonList;
     ArrayList<HashMap<String, String>> katalogHapusJsonList;
@@ -58,6 +59,7 @@ public class KatalogJasaActivity extends AppCompatActivity{
     public void onResume(){
         super.onResume();
         listView = (ListView) findViewById(R.id.listkatalog);
+        katalogNamaJsonList = new ArrayList<>();
         katalogJsonList = new ArrayList<>();
         katalogIdJsonList = new ArrayList<>();
         katalogHapusJsonList = new ArrayList<>();
@@ -129,18 +131,24 @@ public class KatalogJasaActivity extends AppCompatActivity{
                         JSONObject c = listData.getJSONObject(i);
                         String id_jasa = c.getString("jasa_id");
                         String nama_jasa = c.getString("jasa_nama");
+                        String deskripsi_jasa = c.getString("jasa_deskripsi");
+                        String harga_jasa = c.getString("jasa_harga");
 
                         // tmp hash map for single contact
                         HashMap<String, String> data_katalog = new HashMap<>();
                         HashMap<String, String> data_id_katalog = new HashMap<>();
+                        HashMap<String, String> data_nama_katalog = new HashMap<>();
 
                         // adding each child node to HashMap key => value
                         data_id_katalog.put("jasa_id", id_jasa);
-                        data_katalog.put("jasa_nama", nama_jasa);
+                        data_nama_katalog.put("jasa_nama", nama_jasa);
+                        data_katalog.put("jasa_deskripsi", deskripsi_jasa);
+                        data_katalog.put("jasa_harga", harga_jasa);
 
                         // adding contact to contact list
                         katalogJsonList.add(data_katalog);
                         katalogIdJsonList.add(data_id_katalog);
+                        katalogNamaJsonList.add(data_nama_katalog);
                         //Log.e(TAG, "Response json: " + KatalogJsonList);
                     }
                 } catch (final JSONException e) {
@@ -189,7 +197,7 @@ public class KatalogJasaActivity extends AppCompatActivity{
             listView.setAdapter(adapter);*/
 
             namaKatalogJasa = new ArrayList<String>();
-            for (HashMap<String, String> hash : katalogJsonList) {
+            for (HashMap<String, String> hash : katalogNamaJsonList) {
                 for (String current : hash.values()) {
                     namaKatalogJasa.add(current);
                 }
@@ -203,7 +211,7 @@ public class KatalogJasaActivity extends AppCompatActivity{
 
             // Instantiating an adapter to store each items
             //R.layout.listview_layout defines the layout of each item
-            KatalogJasaAdapter adapter = new KatalogJasaAdapter(namaKatalogJasa, KatalogJasaActivity.this, katalogIdJsonList, katalogJsonList, idToko);
+            KatalogJasaAdapter adapter = new KatalogJasaAdapter(namaKatalogJasa, KatalogJasaActivity.this, katalogIdJsonList, katalogJsonList, katalogNamaJsonList,idToko);
 
             // Instantiating an adapter to store each items
             //R.layout.listview_layout defines the layout of each item

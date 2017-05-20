@@ -32,9 +32,13 @@ public class KatalogJasaEdit extends AppCompatActivity {
 
     String idToko;
     String namaJasa;
+    String keteranganJasa;
+    String hargaJasa;
     TextView tvNama;
     EditText etKeterangan;
     EditText etHarga;
+    TextView tvKeterangan;
+    TextView tvHarga;
     String stKeterangan;
     String stHarga;
 
@@ -43,13 +47,24 @@ public class KatalogJasaEdit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.katalog_jasa_edit);
         KatalogJsonList = new ArrayList<>();
+
         stid = getIntent().getExtras().getString("jasa_id");
         tvNama = (TextView)findViewById(R.id.nama_katalog_jasa_edit);
+        tvKeterangan = (TextView)findViewById(R.id.keterangan_katalog_edit);
+        tvHarga = (TextView)findViewById(R.id.harga_katalog_edit);
+
         etKeterangan = (EditText)findViewById(R.id.keterangan_katalog_jasa_edit);
         etHarga = (EditText)findViewById(R.id.harga_katalog_jasa_edit);
+
         idToko = getIntent().getExtras().getString("idToko");
         namaJasa = getIntent().getExtras().getString("jasa_nama");
+        keteranganJasa = getIntent().getExtras().getString("jasa_deskripsi");
+        hargaJasa = getIntent().getExtras().getString("jasa_harga");
+
         tvNama.setText(namaJasa);
+        tvKeterangan.setText(keteranganJasa);
+        tvHarga.setText(hargaJasa);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -164,7 +179,7 @@ public class KatalogJasaEdit extends AppCompatActivity {
             }
             else{
                 Toast.makeText(getApplicationContext(),
-                        "Username / Password Salah",
+                        "Edit Gagal",
                         Toast.LENGTH_LONG)
                         .show();
             }
