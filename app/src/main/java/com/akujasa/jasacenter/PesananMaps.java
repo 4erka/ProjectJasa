@@ -46,7 +46,7 @@ public class PesananMaps extends AppCompatActivity implements OnMapReadyCallback
     private Button btPilih;
     protected GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
-    Double Lat=0.0, Lang=0.0;
+    Double Lat, Lang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class PesananMaps extends AppCompatActivity implements OnMapReadyCallback
                 intentku.putExtra("katalog",katalog);
                 intentku.putExtra("jumlah",jumlah);
                 intentku.putExtra("alamat",alamat);
-                intentku.putExtra("latitutde",Latitude);
+                intentku.putExtra("latitude",Latitude);
                 intentku.putExtra("longitude",Longitude);
                 startActivity(intentku);
                 PesananMaps.this.finish();
