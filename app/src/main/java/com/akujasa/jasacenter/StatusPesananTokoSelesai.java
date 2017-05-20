@@ -142,6 +142,7 @@ public class StatusPesananTokoSelesai extends Fragment{
                         //Log.e(TAG, "Response json: " + KatalogJsonList);
                     }
                 } catch (final JSONException e) {
+                    /*
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
@@ -152,10 +153,12 @@ public class StatusPesananTokoSelesai extends Fragment{
                                     .show();
                         }
                     });
+                    */
 
                 }
             } else {
                 Log.e(TAG, "Could not get json from server.");
+                /*
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -164,7 +167,7 @@ public class StatusPesananTokoSelesai extends Fragment{
                                 Toast.LENGTH_LONG)
                                 .show();
                     }
-                });
+                });*/
 
             }
 

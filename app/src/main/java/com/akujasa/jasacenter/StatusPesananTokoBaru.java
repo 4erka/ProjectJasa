@@ -147,7 +147,7 @@ public class StatusPesananTokoBaru extends Fragment{
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
-                    getActivity().runOnUiThread(new Runnable() {
+                    /*getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(getActivity().getApplicationContext(),
@@ -155,11 +155,12 @@ public class StatusPesananTokoBaru extends Fragment{
                                     Toast.LENGTH_LONG)
                                     .show();
                         }
-                    });
+                    });*/
 
                 }
             } else {
                 Log.e(TAG, "Could not get json from server.");
+                /*
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -168,7 +169,7 @@ public class StatusPesananTokoBaru extends Fragment{
                                 Toast.LENGTH_LONG)
                                 .show();
                     }
-                });
+                });*/
 
             }
 
