@@ -82,6 +82,12 @@ public class ProfilTokoActivity extends AppCompatActivity {
         startActivity(lihat);
     }
 
+    public void onEditToko(View view){
+        Intent edit = new Intent(ProfilTokoActivity.this, ProfilTokoEditActivity.class);
+        edit.putExtra("idToko", idToko);
+        startActivity(edit);
+    }
+
     private class GetAPIProfilToko extends AsyncTask<Void, Void, Void> {
 
         @Override

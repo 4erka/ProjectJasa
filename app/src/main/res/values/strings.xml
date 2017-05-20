@@ -44,4 +44,5 @@
     <string name="title_activity_pesanan_maps">Map</string>
     <string name="title_activity_pesanan_toko_map">Map</string>
     <string name="title_activity_register_toko_map">Map</string>
+    <string name="title_activity_profil_toko_edit_map">Map</string>
 </resources>

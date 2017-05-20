@@ -129,7 +129,8 @@
             android:text="edit"
             android:id="@+id/profiledit"
             android:background="@android:color/holo_red_dark"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white"
+            android:onClick="onEditToko"/>
 
     </LinearLayout>
 </ScrollView>

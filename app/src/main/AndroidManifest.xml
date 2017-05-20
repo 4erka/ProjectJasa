@@ -61,7 +61,10 @@
         <activity android:name=".PesananInfoCancel" />
         <activity android:name=".PesananInfoSelesai" />
         <activity android:name=".ProfilTokoActivity" />
-        <activity android:name=".ProfilTokoEditActivity"></activity>
+        <activity android:name=".ProfilTokoEditActivity" />
+        <activity
+            android:name=".ProfilTokoEditMap"
+            android:label="@string/title_activity_profil_toko_edit_map"></activity>
     </application>
 
 </manifest>
