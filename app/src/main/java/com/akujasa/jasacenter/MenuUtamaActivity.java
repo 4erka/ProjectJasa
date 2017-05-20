@@ -120,8 +120,6 @@ public class MenuUtamaActivity extends AppCompatActivity {
 
         // load nav menu header data
         loadNavHeader();
-
-        // initializing navigation menu
         setUpNavigationView();
 
         if (savedInstanceState == null) {

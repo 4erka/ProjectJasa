@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="16dp"
+    tools:context="com.akujasa.jasacenter.EditActivity">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama"
+        android:id="@+id/editnama"
+        android:gravity="left"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:id="@+id/editemail"
+        android:gravity="left"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/editnama"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Alamat"
+        android:id="@+id/editalamat"
+        android:gravity="left"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/editemail"/>
+
+    <EditText
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nomor HP"
+        android:id="@+id/editnohp"
+        android:gravity="left"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/editalamat"/>
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editnohp"
+        android:layout_marginTop="30dp"
+        android:text="Edit"
+        android:id="@+id/btEdit"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"/>
+
+</RelativeLayout>

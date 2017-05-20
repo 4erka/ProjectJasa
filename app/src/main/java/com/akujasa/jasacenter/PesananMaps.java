@@ -173,7 +173,7 @@ public class PesananMaps extends AppCompatActivity implements OnMapReadyCallback
             LatLng loc = new LatLng(Lat, Lang);
             mMap.addMarker(new MarkerOptions().position(loc).title("Your Position"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         }
     }
 
