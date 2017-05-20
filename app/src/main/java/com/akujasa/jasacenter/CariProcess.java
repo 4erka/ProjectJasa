@@ -33,6 +33,7 @@ public class CariProcess extends AsyncTask{
     private String email_jasa;
     private String nohp_jasa;
     private String rating_jasa;
+    private String kategori_jasa;
     private Activity context;
     private String id;
     private ArrayList<ItemPenyediaJasa> listku;
@@ -78,8 +79,9 @@ public class CariProcess extends AsyncTask{
                 alamat_jasa = jasa_info.getString("pj_alamat");
                 nohp_jasa = jasa_info.getString("pj_nohp");
                 rating_jasa = jasa_info.getString("pj_rating");
+                kategori_jasa = jasa_info.getString("kpj_id");
                 if(status_jasa.equals("1")) {
-                    listku.add(new ItemPenyediaJasa(id_jasa, nama_jasa, email_jasa, alamat_jasa, nohp_jasa, Integer.parseInt(rating_jasa)));
+                    listku.add(new ItemPenyediaJasa(id_jasa, nama_jasa, email_jasa, alamat_jasa, nohp_jasa, kategori_jasa, Integer.parseInt(rating_jasa)));
                 }
             }
 

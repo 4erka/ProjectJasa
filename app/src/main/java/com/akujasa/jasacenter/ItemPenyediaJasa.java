@@ -7,14 +7,7 @@ package com.akujasa.jasacenter;
 public class ItemPenyediaJasa {
     private String id;
 
-    public ItemPenyediaJasa(String id, String nama, String email, String alamat, String nohp, int rating) {
-        this.id = id;
-        this.nama = nama;
-        this.email = email;
-        this.alamat = alamat;
-        this.nohp = nohp;
-        this.rating=rating;
-    }
+
 
     public int getRating() {
         return rating;
@@ -28,6 +21,7 @@ public class ItemPenyediaJasa {
     private String email;
     private String alamat;
     private String nohp;
+    private String kategori;
     private int rating;
 
     public String getId() {
@@ -36,6 +30,24 @@ public class ItemPenyediaJasa {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
+    }
+
+    public ItemPenyediaJasa(String id, String nama, String email, String alamat, String nohp, String kategori, int rating) {
+        this.id = id;
+        this.nama = nama;
+        this.email = email;
+        this.alamat = alamat;
+        this.nohp = nohp;
+        this.kategori = kategori;
+        this.rating = rating;
     }
 
     public String getNama() {

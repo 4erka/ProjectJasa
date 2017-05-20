@@ -93,7 +93,28 @@ public class ListOnProgressProcess extends AsyncTask{
                     ket_jasa = jasa_info.getString("psn_keterangan");
                     nama_jasa = jasa_info.getString("jasa_nama");
                     status_jasa = jasa_info.getString("stat_status");
-                    listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa,status_jasa));
+                    link = "http://rilokukuh.com/admin-jasa/android_pj_get_profile.php";
+                    data = URLEncoder.encode("pj_id","UTF-8")+"="+URLEncoder.encode(id_penyedia,"UTF-8");
+                    url = new URL(link);
+                    conn = url.openConnection();
+                    conn.setDoOutput(true);
+                    wr = new OutputStreamWriter(conn.getOutputStream());
+                    wr.write(data);
+                    wr.flush();
+
+                    reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    sb = new StringBuilder();
+                    line = null;
+                    while((line=reader.readLine())!=null){
+                        sb.append(line);
+                        break;
+                    }
+                    jsonOBJ = new JSONObject(sb.toString());
+                    Log.e("A",sb.toString());
+                    JSONArray id_datas = jsonOBJ.getJSONArray("data");
+                    JSONObject id_data = id_datas.getJSONObject(0);
+                    String id_kategori = id_data.getString("kpj_id");
+                    listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa,status_jasa,id_kategori));
 
                 }
             }
@@ -133,7 +154,28 @@ public class ListOnProgressProcess extends AsyncTask{
                         ket_jasa = jasa_info.getString("psn_keterangan");
                         nama_jasa = jasa_info.getString("jasa_nama");
                         status_jasa = jasa_info.getString("stat_status");
-                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa,status_jasa));
+                        link = "http://rilokukuh.com/admin-jasa/android_pj_get_profile.php";
+                        data = URLEncoder.encode("pj_id","UTF-8")+"="+URLEncoder.encode(id_penyedia,"UTF-8");
+                        url = new URL(link);
+                        conn = url.openConnection();
+                        conn.setDoOutput(true);
+                        wr = new OutputStreamWriter(conn.getOutputStream());
+                        wr.write(data);
+                        wr.flush();
+
+                        reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        sb = new StringBuilder();
+                        line = null;
+                        while((line=reader.readLine())!=null){
+                            sb.append(line);
+                            break;
+                        }
+                        jsonOBJ = new JSONObject(sb.toString());
+                        Log.e("A",sb.toString());
+                        JSONArray id_datas = jsonOBJ.getJSONArray("data");
+                        JSONObject id_data = id_datas.getJSONObject(0);
+                        String id_kategori = id_data.getString("kpj_id");
+                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa,status_jasa,id_kategori));
                     }
                 }
                 return status;
@@ -151,7 +193,7 @@ public class ListOnProgressProcess extends AsyncTask{
     protected void onPostExecute(Object o) {
         this.status = (String)o;
         //
-
+        //Toast.makeText(context,status,Toast.LENGTH_LONG).show();
             PesananListAdapter adapterku = new PesananListAdapter(context, 0, listku);
             lvList.setAdapter(adapterku);
             lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
