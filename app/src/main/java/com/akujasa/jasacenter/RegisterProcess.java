@@ -3,6 +3,7 @@ package com.akujasa.jasacenter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -77,6 +78,10 @@ public class RegisterProcess extends AsyncTask {
 
         if(status.equals("success")) {
             Toast.makeText(context,"Registrasi berhasil!",Toast.LENGTH_LONG).show();
+            SharedPreferences sp = context.getSharedPreferences("pencari_info",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("pencari_id",id);
+            editor.commit();
             Intent intentku = new Intent(context, MenuUtamaActivity.class);
             intentku.putExtra("pencari_id",id);
             context.startActivity(intentku);

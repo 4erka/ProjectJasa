@@ -97,6 +97,7 @@ public class PesananMaps extends AppCompatActivity implements OnMapReadyCallback
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+        mGoogleApiClient.connect();
     }
 
 
@@ -142,21 +143,7 @@ public class PesananMaps extends AppCompatActivity implements OnMapReadyCallback
                 Lat = mMap.getCameraPosition().target.latitude;
                 Lang = mMap.getCameraPosition().target.longitude;
                 //Toast.makeText(getBaseContext(),"Ketemu:",Toast.LENGTH_SHORT).show();
-                Geocoder geocoder;
-                List<Address> addresses;
-                geocoder = new Geocoder(getBaseContext(), Locale.getDefault());
 
-                try {
-                    addresses = geocoder.getFromLocation(Lat, Lang, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                    if(addresses!=null && addresses.size()>0) {
-                        if(addresses.get(0).getAddressLine(0)!=null) {
-                            String address = addresses.get(0).getAddressLine(0);
-                            etLokasi.setText(address);
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
 
 
@@ -174,13 +161,7 @@ public class PesananMaps extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onConnected(Bundle bundle) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             return;
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
@@ -192,6 +173,7 @@ public class PesananMaps extends AppCompatActivity implements OnMapReadyCallback
             LatLng loc = new LatLng(Lat, Lang);
             mMap.addMarker(new MarkerOptions().position(loc).title("Your Position"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
         }
     }
 

@@ -37,10 +37,10 @@ public class PesananListAdapter extends ArrayAdapter<ItemPesanan> {
 
         final TextView tvNama= (TextView) ConvertView.findViewById(R.id.nama_jasa);
         final TextView tvTanggal= (TextView) ConvertView.findViewById(R.id.tanggal_jasa);
-        final TextView tvAlamat= (TextView) ConvertView.findViewById(R.id.alamat_jasa);
+        final TextView tvStatus= (TextView) ConvertView.findViewById(R.id.status_jasa);
         tvNama.setText(dtpesanan.getNama_penyedia());
         tvTanggal.setText(dtpesanan.getTanggal_jasa());
-        tvAlamat.setText(dtpesanan.getAlamat_jasa());
+        tvStatus.setText(dtpesanan.getStatus_jasa());
 
 
         return ConvertView;

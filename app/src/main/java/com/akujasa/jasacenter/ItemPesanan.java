@@ -17,8 +17,10 @@ public class ItemPesanan implements Serializable {
     private String alamat_jasa;
     private String ket_jasa;
     private String nama_jasa;
+    private String status_jasa;
 
-    public ItemPesanan(String id_pesanan, String id_penyedia, String id_status, String nama_penyedia, String tanggal_jasa, String harga_jasa, String jumlah_jasa, String alamat_jasa, String ket_jasa, String nama_jasa) {
+
+    public ItemPesanan(String id_pesanan, String id_penyedia, String id_status, String nama_penyedia, String tanggal_jasa, String harga_jasa, String jumlah_jasa, String alamat_jasa, String ket_jasa, String nama_jasa, String status_jasa) {
         this.id_pesanan = id_pesanan;
         this.id_penyedia = id_penyedia;
         this.id_status = id_status;
@@ -29,6 +31,15 @@ public class ItemPesanan implements Serializable {
         this.alamat_jasa = alamat_jasa;
         this.ket_jasa = ket_jasa;
         this.nama_jasa = nama_jasa;
+        this.status_jasa = status_jasa;
+    }
+
+    public String getStatus_jasa() {
+        return status_jasa;
+    }
+
+    public void setStatus_jasa(String status_jasa) {
+        this.status_jasa = status_jasa;
     }
 
     public String getKet_jasa() {

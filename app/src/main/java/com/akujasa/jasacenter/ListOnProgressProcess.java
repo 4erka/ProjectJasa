@@ -35,6 +35,7 @@ public class ListOnProgressProcess extends AsyncTask{
     private String alamat_jasa;
     private String nama_jasa;
     private String ket_jasa;
+    private String status_jasa;
     private Activity context;
     private String status;
     private String ksm_id;
@@ -91,7 +92,8 @@ public class ListOnProgressProcess extends AsyncTask{
                     alamat_jasa = jasa_info.getString("psn_alamat");
                     ket_jasa = jasa_info.getString("psn_keterangan");
                     nama_jasa = jasa_info.getString("jasa_nama");
-                    listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa));
+                    status_jasa = jasa_info.getString("stat_status");
+                    listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa,status_jasa));
 
                 }
             }
@@ -130,7 +132,8 @@ public class ListOnProgressProcess extends AsyncTask{
                         alamat_jasa = jasa_info.getString("psn_alamat");
                         ket_jasa = jasa_info.getString("psn_keterangan");
                         nama_jasa = jasa_info.getString("jasa_nama");
-                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa));
+                        status_jasa = jasa_info.getString("stat_status");
+                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa,status_jasa));
                     }
                 }
                 return status;
@@ -156,52 +159,51 @@ public class ListOnProgressProcess extends AsyncTask{
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String id_stat = listku.get(position).getId_status();
                     if(id_stat.equals("2")){
-                        String stat = "Sudah disetujui penyedia jasa";
                         Intent intentku = new Intent(context, PesananInfo.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
                     else if(id_stat.equals("3")){
-                        String stat = "Menuju tempat anda";
+
                         Intent intentku = new Intent(context, PesananInfo.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
                     else if(id_stat.equals("4")){
-                        String stat = "Dalam Waiting List";
+
                         Intent intentku = new Intent(context, PesananInfo.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
                     else if(id_stat.equals("5")){
-                        String stat = "Dalam proses pengerjaan";
+
                         Intent intentku = new Intent(context, PesananInfo.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
                     else if(id_stat.equals("6")){
-                        String stat = "Mengantarkan hasil pesanan";
+
                         Intent intentku = new Intent(context, PesananInfo.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
                     else if(id_stat.equals("7")){
-                        String stat = "Selesai";
+
                         Intent intentku = new Intent(context, PesananInfoSelesai.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
                     else if(id_stat.equals("1")){
-                        String stat = "Menunggu persetujuan penyedia jasa";
+
                         Intent intentku = new Intent(context, PesananInfoCancel.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
 

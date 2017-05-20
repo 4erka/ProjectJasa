@@ -38,6 +38,7 @@ public class ListSelesaiProcess extends AsyncTask{
     private Activity context;
     private String status;
     private String ksm_id;
+    private String status_jasa;
     private ArrayList<ItemPesanan> listku;
     private ListView lvList;
     public ListSelesaiProcess(Activity context, ListView lvList){
@@ -89,7 +90,8 @@ public class ListSelesaiProcess extends AsyncTask{
                     alamat_jasa = jasa_info.getString("psn_alamat");
                     ket_jasa = jasa_info.getString("psn_keterangan");
                     nama_jasa = jasa_info.getString("jasa_nama");
-                    listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa));
+                    status_jasa = jasa_info.getString("stat_status");
+                    listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa,status_jasa));
 
                 }
             }
@@ -130,7 +132,8 @@ public class ListSelesaiProcess extends AsyncTask{
                         alamat_jasa = jasa_info.getString("psn_alamat");
                         ket_jasa = jasa_info.getString("psn_keterangan");
                         nama_jasa = jasa_info.getString("jasa_nama");
-                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa));
+                        status_jasa = jasa_info.getString("stat_status");
+                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa,status_jasa));
                     }
                 }
 
@@ -172,7 +175,8 @@ public class ListSelesaiProcess extends AsyncTask{
                         alamat_jasa = jasa_info.getString("psn_alamat");
                         ket_jasa = jasa_info.getString("psn_keterangan");
                         nama_jasa = jasa_info.getString("jasa_nama");
-                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa));
+                        status_jasa = jasa_info.getString("stat_status");
+                        listku.add(new ItemPesanan(id_pesanan, id_penyedia, id_status, nama_penyedia, tanggal_jasa, harga_jasa, jumlah_jasa, alamat_jasa, ket_jasa, nama_jasa,status_jasa));
                     }
                 }
 
@@ -214,7 +218,8 @@ public class ListSelesaiProcess extends AsyncTask{
                     alamat_jasa = jasa_info.getString("psn_alamat");
                     ket_jasa = jasa_info.getString("psn_keterangan");
                     nama_jasa = jasa_info.getString("jasa_nama");
-                    listku.add(new ItemPesanan(id_pesanan, id_penyedia,id_status, nama_penyedia,tanggal_jasa,harga_jasa,jumlah_jasa, alamat_jasa,ket_jasa, nama_jasa));
+                    status_jasa = jasa_info.getString("stat_status");
+                    listku.add(new ItemPesanan(id_pesanan, id_penyedia,id_status, nama_penyedia,tanggal_jasa,harga_jasa,jumlah_jasa, alamat_jasa,ket_jasa, nama_jasa,status_jasa));
                 }
 
                 }
@@ -238,24 +243,24 @@ public class ListSelesaiProcess extends AsyncTask{
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String id_stat = listku.get(position).getId_status();
                     if(id_stat.equals("8")){
-                        String stat = "Ditolak penyedia jasa";
+
                         Intent intentku = new Intent(context, PesananInfo.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
                     if(id_stat.equals("9")){
-                        String stat = "Dibatalkan";
+
                         Intent intentku = new Intent(context, PesananInfo.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
                     else if(id_stat.equals("11")){
-                        String stat = "Selesai";
+
                         Intent intentku = new Intent(context, PesananInfo.class);
                         intentku.putExtra("data_pesanan", listku.get(position));
-                        intentku.putExtra("status", stat);
+                        intentku.putExtra("status", status_jasa);
                         context.startActivity(intentku);
                     }
 

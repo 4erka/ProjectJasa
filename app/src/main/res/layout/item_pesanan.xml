@@ -38,7 +38,7 @@
                 android:text="Susi Ningsih"
                 android:textSize="15dp" />
             <TextView
-                android:id="@+id/alamat_jasa"
+                android:id="@+id/status_jasa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
