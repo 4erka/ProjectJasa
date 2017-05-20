@@ -2,6 +2,7 @@ package com.akujasa.jasacenter;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -89,11 +90,14 @@ public class MenuUtamaActivity extends AppCompatActivity {
     private Handler mHandler;
     String idToko;
     String idKonsumen;
+    String id_pencari;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_utama_activity);
+        SharedPreferences sp = this.getSharedPreferences("pencari_info",MODE_PRIVATE);
+        id_pencari = sp.getString("pencari_id","a");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -136,7 +140,8 @@ public class MenuUtamaActivity extends AppCompatActivity {
      */
     private void loadNavHeader() {
         // name, website
-        txtName.setText("Rilo Kukuh");
+        new HomeProcess(this,txtName,txtWebsite).execute(id_pencari);
+        //txtName.setText("Rilo Kukuh");
         //txtWebsite.setText("www.jasa.com");
 
         // loading header background image
