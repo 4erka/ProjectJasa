@@ -10,7 +10,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_toStartOf="@+id/katalog_edit">
             <TextView
                 android:id="@+id/listkatalogcontent"
                 android:layout_width="wrap_content"
