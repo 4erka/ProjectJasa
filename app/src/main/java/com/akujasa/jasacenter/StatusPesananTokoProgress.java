@@ -146,6 +146,7 @@ public class StatusPesananTokoProgress extends Fragment{
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    /*
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -155,10 +156,12 @@ public class StatusPesananTokoProgress extends Fragment{
                                     .show();
                         }
                     });
+                    */
 
                 }
             } else {
                 Log.e(TAG, "Could not get json from server.");
+                /*
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -168,6 +171,7 @@ public class StatusPesananTokoProgress extends Fragment{
                                 .show();
                     }
                 });
+                */
 
             }
 
